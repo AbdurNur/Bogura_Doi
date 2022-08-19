@@ -49,6 +49,20 @@
               <p>Profile</p>
             </a>
           </li>
+
+          <li class="nav-item">
+            <a href="add_product.php" class="nav-link text-light">
+              <i class="nav-icon far fa-circle text-warning"></i>
+              <p>Add Produt</p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="add_stock.php" class="nav-link text-light">
+              <i class="nav-icon far fa-circle text-warning"></i>
+              <p>Add Stock</p>
+            </a>
+          </li>
           
           <li class="nav-item">
             <a href="../logut.php" class="nav-link text-light">

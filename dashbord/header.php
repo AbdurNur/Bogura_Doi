@@ -1,8 +1,10 @@
 
-<?php
+<?php session_start();
 include '../function/session_info.php';
 include '../function/utilitis.php';
 include '../function/crud.php';
+include "../function/add_product_process.php";
+include "../function/stcok_process.php";
 
 
 
