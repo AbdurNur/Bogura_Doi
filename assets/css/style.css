@@ -1,0 +1,83 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+.text-primary {
+    color: #DBAA7E !important;
+}
+
+.btn-primary {
+    background-color: #DBAA7E;
+    border: 1px solid #DBAA7E;
+    padding: .6rem 2rem;
+    box-shadow: none;
+    transition: all .3s ease-in-out;
+}
+
+.btn-primary:hover {
+    background-color: transparent;
+    color: #000;
+    padding: .6rem 1.7rem;
+    border: 1px solid #000;
+    outline: none;
+}
+
+.btn-secondary {
+    background-color: #FFF;
+    border: 2px solid #FFF;
+    color: #000;
+    border: 1px solid #000;
+    padding: .6rem 2rem;
+    transition: all .3s ease-in-out;
+}
+
+.btn-secondary:hover {
+    background-color: #DBAA7E;
+    border-color: #DBAA7E;
+    padding: .6rem 1.7rem;
+}
+
+.card a {
+    color: #000 !important;
+    text-decoration: none;
+}
+
+.add-cart {
+    padding: .3rem .7rem;
+    font-size: .7rem;
+    margin-top: 1rem;
+    border-radius: 50rem;
+}
+
+a.add-cart {
+    color: #fff !important;
+}
+
+.add-cart:hover {
+    background-color: #DBAA7E;
+    color: #fff;
+    padding: .2rem .5rem;
+    border-color: #DBAA7E;
+}
+
+.add-cart:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    background-color: #DBAA7E;
+}
+
+.footer-copyright {
+    font-size: 1rem;
+    color: #fff;
+    background-color: #DBAA7E;
+}
+
+.footer-copyright a {
+    text-decoration: none;
+    color: #fff !important;
+    font-weight: 600;
+}
