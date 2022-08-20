@@ -21,12 +21,12 @@
 
                     
                         <!-- Grid column -->
-                        <div class="col-lg-3 col-md-6 mb-4 d-flex align-items-stretch">
+                        <div class="col-lg-3 col-md-6 mb-4 d-flex  align-items-start">
                                 <!-- Card -->
-                                <div class="card align-items-center">
+                                <div class="card align-items-center flex-wrap">
                                     <!-- Card image -->
                                     <div class="view overlay">
-                                        <img src="assets/images/<?php echo $value->product_img?>" class="card-img-top" alt="">
+                                        <img  src="assets/images/<?php echo $value->product_img?>" class="card-img-top" alt="">
                                     </div>
                                     <div class="card-body text-center d-flex flex-column">
                                         <h5 class="mb-3">

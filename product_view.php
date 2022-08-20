@@ -46,7 +46,7 @@ $view_data=get_data($table_name,$where);
                     <a href="register.php" type="button" class="btn btn-secondary mt-3 mx-3">Buy Now</a>
                 </div>
                 <div class="col-lg-6 col-md-12 text-lg-end text-md-center text-sm-center">
-                    <img src="assets/images/<?php echo $view_data->product_img ?>" class="img-fluid">
+                    <img style="height: 500px; width: 500px;" src="assets/images/<?php echo $view_data->product_img ?>" class="img-fluid">
                 </div>
             </div>
         </div>

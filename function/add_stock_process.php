@@ -1,6 +1,11 @@
 <?php
 
     if(isset($_POST["add_product"]) && !empty($_POST["add_product"])){
+        
+       
+
+
+  
 
                 
         // echo "<pre>";

@@ -25,6 +25,8 @@ include "top_nav.php"
                         <!-- Name -->
                         <input type="text" id="defaultContactFormName" class="form-control mb-4" placeholder="Name">
                         <!-- Email -->
+                        <input type="text" id="defaultContactFormName" class="form-control mb-4" placeholder="Contuct">
+                        <!-- Contact -->
                         <input type="email" id="defaultContactFormEmail" class="form-control mb-4" placeholder="E-mail">
                         <!-- Message -->
                         <div class="form-group">

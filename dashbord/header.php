@@ -36,10 +36,9 @@ include "../function/registration_process.php";
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="theme/plugins/fontawesome-free/css/all.min.css">
+  
 <!-- Font Awesome cdn -->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"  />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"  />
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   
@@ -57,6 +56,9 @@ include "../function/registration_process.php";
   <link rel="stylesheet" href="theme/plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="theme/plugins/summernote/summernote-bs4.min.css">
+
+  <!-- Custom css -->
+  <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">

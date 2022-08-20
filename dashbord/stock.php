@@ -71,7 +71,7 @@ include "left_nav.php";
                                     <th scope="col">SL</th>
                                     <th scope="col">PRODUCT Sl</th>
                                     <th scope="col">PRODUCT NAME</th>
-                                    <th scope="col">PRODUCT IMAGE</th>
+                                    <th scope="col">IMAGE</th>
                                     <th scope="col">QUANTITY</th>
                                     <th scope="col">DP</th>
                                     <th scope="col"> STOCK DP</th>

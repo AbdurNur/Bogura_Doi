@@ -12,7 +12,23 @@
                 $weight        = $_POST["weight"];
 
 
+                    
+                    
+                // [product_img] => Array
+                // (
+                //     [name] => doi_1.png
+                //     [full_path] => doi_1.png
+                //     [type] => image/png
+                //     [tmp_name] => D:\localserver\tmp\phpEB04.tmp
+                //     [error] => 0
+                //     [size] => 226192
+                // )
+        
+
+
+
                 $image_name      = $_FILES["product_img"]["name"];
+                $image_size      = $_FILES["product_img"]["size"];
                 $tmp_name=$_FILES["product_img"]['tmp_name'];
                 $destination   = "../assets/images./". $image_name;
                 $upload=move_uploaded_file($tmp_name,$destination);
@@ -41,15 +57,35 @@
                 ];
 
                 if($upload){
-                    $store_data =  store_data($table, $data);
+                    
 
-                    if($store_data->status == "success"){
-                        $_SESSION["success"] = true;
-                        $_SESSION["message"]  = $store_data->message;
-                    }else{
-                        $_SESSION["error"]    = true;
-                        $_SESSION["message"]  = $store_data->message;
-                    }
+                        if($image_size<=5000){
+
+
+                            $store_data =  store_data($table, $data);
+
+                            if($store_data->status == "success"){
+                                $_SESSION["success"] = true;
+                                $_SESSION["message"]  = $store_data->message;
+                            }else{
+                                $_SESSION["error"]    = true;
+                                $_SESSION["message"]  = $store_data->message;
+                            }
+
+
+                        }else{
+                            $_SESSION["error"]    = true;
+                            $_SESSION["message"]  = 'Image Size Must Be 500px/500px!';
+
+
+
+
+
+                        }
+
+
+
+                   
                 }
 
             }

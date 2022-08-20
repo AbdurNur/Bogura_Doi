@@ -76,14 +76,15 @@ include "left_nav.php";
                     <th scope="col">SL</th>
                     <th scope="col">Name</th>
                     <th scope="col">Email</th>
+                    <th scope="col">Contact</th>
                     <th scope="col">Image</th>
                     <th scope="col">User Type</th>
-                    <th scope="col">Pressen Address</th>
-                    <th scope="col">Parmanent Address</th>                    
+                    <th scope="col">Pre Add</th>
+                    <th scope="col">Par Add</th>                    
                     <th scope="col">Created At</th>
-                    <th scope="col">Created By</th>
-                    <th scope="col">Update At </th>
-                    <th scope="col">Update By </th>
+                    <th scope="col">Cre By</th>
+                    <th scope="col">Upd At </th>
+                    <th scope="col">Upd By </th>
                     <th scope="col">Action </th>
                   </tr>
                 </thead>
@@ -94,7 +95,8 @@ include "left_nav.php";
                         <th scope="row"><?php echo $sl++ ?></th>
                         
                         <td><?php echo $value->name  ?></td>
-                        <td><?php echo $value->email  ?></td>
+                        <td style="font-size: 12px;"><?php echo $value->email  ?></td>
+                        <td><?php echo $value->number  ?></td>
                         <td><?php echo $value->image  ?></td>
                         <td><?php echo $value->user_type  ?></td>
                         <td><?php echo $value->address  ?></td>
