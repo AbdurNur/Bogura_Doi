@@ -1,10 +1,23 @@
 
 <?php session_start();
+if(!isset( $_SESSION['login_status'])){
+
+  $message    =   "Unauthorised access!";
+
+  $_SESSION['error']            =   'error';
+  $_SESSION['message']    =   $message;
+  header("Location:../index.php");
+  //include '../index.php';
+  exit;
+
+
+}
 include '../function/session_info.php';
 include '../function/utilitis.php';
 include '../function/crud.php';
-include "../function/add_product_process.php";
-include "../function/stcok_process.php";
+include "../function/add_view_product_proccess.php";
+include "../function/add_stock_process.php";
+include "../function/registration_process.php";
 
 
 
@@ -29,6 +42,7 @@ include "../function/stcok_process.php";
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"  />
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  
   <!-- Tempusdominus Bootstrap 4 -->
   <link rel="stylesheet" href="theme/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
   <!-- iCheck -->

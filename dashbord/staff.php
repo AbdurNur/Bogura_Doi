@@ -29,7 +29,7 @@ include "left_nav.php";
 
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0">GENEREL USER LIST</h1>
+          <h1 class="m-0">STAFF LIST</h1>
           
         </div><!-- /.col -->
         <div class="col-sm-6">
@@ -53,7 +53,8 @@ include "left_nav.php";
           $table_name='users';
 
           $where=[
-            'user_type'=>'3'
+            'user_type'=>'1',
+            
 
 
           ];

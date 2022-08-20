@@ -41,7 +41,7 @@ $oder_dataa = get_all_data('product_order', $where, $cloums);
                         $sl = 1;
 
                         ?>
-                        <?php if ($value->oder_status == 'no_delivered') { ?>
+                        <?php if ($value->oder_status == 'no_dalivered') { ?>
 
                             <table class="table table-bordered">
                                 <thead>

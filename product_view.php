@@ -16,7 +16,8 @@ include "top_nav.php"
     $where=[
         'id'=>$id
     ];
-$view_data=get_data('products',$where);
+    $table_name='stock';
+$view_data=get_data($table_name,$where);
 
 // print'<pre>';
 // print_r();

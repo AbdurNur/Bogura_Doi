@@ -50,75 +50,88 @@ include "left_nav.php";
       <div class="row">
 
         <?php
-                    
-            $table_name='stock';
+          $where=[
+            'oder_status'=>'pending'
 
-            $stock=get_all_data($table_name,);
-           
+
+          ];
+          $table_name='product_order';
+          $total_order=get_all_data($table_name,$where);
+
                 // print'<pre>';    
                 // print_r($all_user);
                 // print'</pre>';
         ?>
-
-        <?php
+              <?php
                 
-                if($stock){
+
+                if($total_order){
                     $sl=1;
                     ?>
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
                                     <th scope="col">SL</th>
-                                    <th scope="col">PRODUCT Sl</th>
+                                    <th scope="col">ORDER BY</th>
+                                    <th scope="col">PRODUCT</th>
                                     <th scope="col">PRODUCT NAME</th>
-                                    <th scope="col">PRODUCT IMAGE</th>
                                     <th scope="col">QUANTITY</th>
-                                    <th scope="col">DP</th>
-                                    <th scope="col"> STOCK DP</th>
-                                    <th scope="col">MRP</th>
+                                    <th scope="col">RATE</th>
+                                    <th scope="col">COMMISSION</th>
+                                    <th scope="col">TOTAL PRICE</th>
+                                    <th scope="col">ORDER NO</th>
                                     
-                
-                                    <th scope="col">CREATED AT</th>
-                                    <th scope="col">CREATED BY</th>
-                                    <th scope="col">UPDATED AT</th>
-                                    <th scope="col">UPDATED BY</th>
+                                    <th scope="col">ORDER STATUS</th>
+                                    <th scope="col">ORDER DATE</th>
+                                    <th scope="col">DELIVERED DATE</th>
                                     <th scope="col">ACTION</th>
-
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
-                                    foreach($stock as $value){ 
+                                    foreach($total_order as $value){ 
                             
                                        
                                         
                                     
                                         ?>
-                                        <tr >
-                                            
+                                        <tr style="background-color:<?php echo $value->color_code ?>;">
                                             <th scope="row"><?php echo $sl++?></th>
-                                            <td><?php echo $value->product_sl?></td>
-                                            <td><?php echo $value->product_name	?></td>
+                                            <td><?php echo $value->order_by ?></td>
                                             
                                             <td style="background-color:white;">
                                             <img style="height: 50px; width: 50px;  " src="../assets/images/<?php echo $value->product_img?>" class="card-img-top" alt="">
                                             </td>
+                                            <td><?php echo $value->product_name ?></td>
                                             <td><?php echo $value->quantity ?></td>
-                                            <td><?php echo $value->dp ?></td>
-                                            <td><?php echo ($value->dp*$value->quantity) ?></td>
-                                            
-                                            <td><?php echo $value->product_price ?></td>
-                                            <td><?php echo $value->created_at ?></td>
-                                            <td><?php echo $value->created_by ?></td>
-                                            <td><?php echo $value->updated_at?></td>
-                                            <td><?php echo $value->updated_by ?></td>                                                      
+                                            <td><?php echo $value->price ?></td>
+                                            <td><?php echo $value->commission ?></td>
+                                            <td><?php echo $value->total_price ?></td>
+                                            <td><?php echo $value->order_no ?></td>
+                                            <td><?php echo $value->oder_status ?></td>
+                                            <td><?php echo $value->order_date ?></td>                                                      
                                             <td>
-                                                 <a href="#" class="btn btn-danger">Delete</a>
+                                                <?php
+                                                if(!empty($value->dalivery_date)){
+                                                    echo $value->dalivery_date;
+
+
+                                                }else{
+                                                    echo "Delevery Not Yet";
+
+
+                                                }
+                                            
+                                            
+                                                ?>
+                                            </td> 
+                                            
+                                            <td>
+                                                 <a href="#" class="btn btn-danger">Cancel</a>
                                                  <a href="#" class="btn btn-success" >Edit</a>
                                                 
                                                 
-                                            </td>                                                      
-                                                                                                  
+                                            </td>    
                                         </tr>
                                     <?php } ?>
                             
@@ -127,8 +140,20 @@ include "left_nav.php";
                     
                     <!-- end of foreach -->
 
+                <?php }else{ ?>
+
+                    <div>
+
+                        <h1 class=" text-danger">NO ORDER PENDING!</h1>
+                    </div>
+
+
+
+                
+                
                 <?php } ?>
 
+        
            
 
 

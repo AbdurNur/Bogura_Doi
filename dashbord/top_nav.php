@@ -1,5 +1,5 @@
  <!-- Navbar -->
- <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+ <nav class="main-header navbar navbar-expand navbar-white navbar-light ">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
@@ -8,8 +8,12 @@
       <li class="nav-item d-none d-sm-inline-block">
         <a href="dasbord.php" class="nav-link">Home</a>
       </li>
+      
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
+        <a href="shop.php" class="nav-link">Shop</a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="admin_registration.php" class="nav-link">Add User</a>
       </li>
     </ul>
 

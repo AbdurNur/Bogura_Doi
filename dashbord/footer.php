@@ -23,6 +23,7 @@
 <script>
   $.widget.bridge('uibutton', $.ui.button)
 </script>
+
 <!-- Bootstrap 4 -->
 <script src="theme/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- ChartJS -->
@@ -49,5 +50,18 @@
 <script src="theme/dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="theme/dist/js/pages/dashboard.js"></script>
+
+<script>
+        
+        function myFunction_2() {
+            var password = document.getElementById("registration_password");
+            if (password.type === "password") {
+                password.type = "text";
+            } else {
+                password.type = "password";
+            }
+        }
+       
+</script>
 </body>
 </html>

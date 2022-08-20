@@ -25,42 +25,96 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           
           <li class="nav-header text-light">LABELS</li>
-          <li class="nav-item">
-            <a href="all_users.php" class="nav-link text-light">
-            <i class="nav-icon far fa-circle text-warning"></i>
-              <p class="text">All User</p>
+          
+
+          <li class="nav-item ">
+            <a href="#" class="nav-link text-light">
+              <i class="nav-icon fas fa-edit"></i>
+              <p>
+                All User
+                <i class="fas fa-angle-left right"></i>
+              </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="all_users.php" class="nav-link text-light">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Generel User</p>
+                </a>
+              </li>
+              
+            </ul>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="staff.php" class="nav-link text-light">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>STAFF</p>
+                </a>
+              </li>
+              
+            </ul>
           </li>
-          <li class="nav-item">
-            <a href="total_order.php" class="nav-link text-light">
-            <i class="nav-icon far fa-circle text-warning"></i>
-              <p>Total Order</p>
+          <li class="nav-item ">
+            <a href="#" class="nav-link text-light">
+              <i class="nav-icon fas fa-edit"></i>
+              <p>
+                All ORDER
+                <i class="fas fa-angle-left right"></i>
+              </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="new_order.php" class="nav-link text-light">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>NEW ORDWE</p>
+                </a>
+              </li>
+              
+            </ul>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="pending_order.php" class="nav-link text-light">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>PENDING</p>
+                </a>
+              </li>
+              
+            </ul>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="success_order.php" class="nav-link text-light">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>SUCESS</p>
+                </a>
+              </li>
+              
+            </ul>
           </li>
+
+
+          
+
+
           <li class="nav-item">
             <a href="stock.php" class="nav-link text-light">
             <i class="nav-icon far fa-circle text-warning"></i>
               <p>Stock</p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link text-light">
-              <i class="nav-icon far fa-circle text-warning"></i>
-              <p>Profile</p>
-            </a>
-          </li>
-
-          <li class="nav-item">
-            <a href="add_product.php" class="nav-link text-light">
-              <i class="nav-icon far fa-circle text-warning"></i>
-              <p>Add Produt</p>
-            </a>
-          </li>
+          
+          
 
           <li class="nav-item">
             <a href="add_stock.php" class="nav-link text-light">
               <i class="nav-icon far fa-circle text-warning"></i>
               <p>Add Stock</p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="add_view_product.php" class="nav-link text-light">
+              <i class="nav-icon far fa-circle text-warning"></i>
+              <p>Add View Produt </p>
             </a>
           </li>
           

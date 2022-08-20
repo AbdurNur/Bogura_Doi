@@ -50,8 +50,13 @@ include "left_nav.php";
       <div class="row">
 
         <?php
+          $where=[
+            'oder_status'=>'delivered'
+
+
+          ];
           $table_name='product_order';
-          $total_order=get_all_data($table_name);
+          $total_order=get_all_data($table_name,$where);
 
                 // print'<pre>';    
                 // print_r($all_user);
@@ -135,18 +140,13 @@ include "left_nav.php";
                     
                     <!-- end of foreach -->
 
-                <?php }else{ ?>
-
-                    <div>
-
-                        <h1 class=" text-danger">NO ORDER YET !</h1>
-                    </div>
-
-
-
-                
-                
                 <?php } ?>
+
+                   
+
+                
+                
+                
 
         
            

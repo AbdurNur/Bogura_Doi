@@ -36,7 +36,7 @@ include "left_nav.php";
                 ?> 
             </div>
 
-            <!-- input -->
+            <!-- Email input -->
             <div class="form-outline mb-4">
                 <input type="text" id="" class="form-control" name="product_name" />
                 <label class="form-label" for="form4Example2">
@@ -60,7 +60,51 @@ include "left_nav.php";
             </div>
 
 
-            <!--  input -->
+            <!-- Email input -->
+            <div class="form-outline mb-4">
+                <input type="text" id="" class="form-control" name="quantity" />
+                <label class="form-label" for="form4Example2">
+                <?php
+                if(isset($_SESSION['error_field']['quantity']) && !empty($_SESSION['error_field']['quantity'])){
+                    ?>
+                    <div class="error_show">
+                        <span class="text-danger">
+                            <?php
+                                echo $_SESSION['error_field']['quantity'];
+                                unset($_SESSION['error_field']['quantity']);
+                            ?>
+                            </span>
+                    </div>
+               <?php }else{
+                   ?>
+                    Quantity </label>
+                   <?php
+               }
+                ?> 
+            </div>
+            <!-- Email input -->
+            <div class="form-outline mb-4">
+                <input type="text" id="" class="form-control" name="dp" />
+                <label class="form-label" for="form4Example2">
+                <?php
+                if(isset($_SESSION['error_field']['dp']) && !empty($_SESSION['error_field']['dp'])){
+                    ?>
+                    <div class="error_show">
+                        <span class="text-danger">
+                            <?php
+                                echo $_SESSION['error_field']['dp'];
+                                unset($_SESSION['error_field']['dp']);
+                            ?>
+                            </span>
+                    </div>
+               <?php }else{
+                   ?>
+                    DP</label>
+                   <?php
+               }
+                ?> 
+            </div>
+            <!-- Email input -->
             <div class="form-outline mb-4">
                 <input type="text" id="" class="form-control" name="product_price" />
                 <label class="form-label" for="form4Example2">
@@ -82,7 +126,7 @@ include "left_nav.php";
                }
                 ?> 
             </div>
-            <!--  input -->
+            <!-- Email input -->
             <div class="form-outline mb-4">
                 <input type="text" id="" class="form-control" name="product_code" />
                 <label class="form-label" for="form4Example2">
@@ -105,7 +149,7 @@ include "left_nav.php";
               ?> 
                 
             </div>
-            <!--  input -->
+            <!-- Email input -->
             <div class="form-outline mb-4">
                 <input type="text" id="form4Example2" class="form-control" name="weight" />
                 <label class="form-label" for="form4Example2">
@@ -150,7 +194,7 @@ include "left_nav.php";
               ?> 
             </div>  
             <!-- Submit button -->
-            <input type="submit" class="btn btn-primary btn-block mb-4" value="Add Product" name="add_product">
+            <input type="submit" class="btn btn-primary btn-block mb-4" value="Add Stock Product" name="add_stock">
         </form>
      </div>
     </div>

@@ -1,55 +1,66 @@
 <?php
 
-    if(isset($_POST["add_product"]) && !empty($_POST["add_product"])){
+    if(isset($_POST["add_stock"]) && !empty($_POST["add_stock"])){
    
-                $table         = "products";
+                $table         = "stock";
                 $product_sl    = $_POST["product_sl"];
                 $product_name  = $_POST["product_name"];
+                $quantity      = $_POST["quantity"];
+                $dp            = $_POST["dp"];
                 $product_price = $_POST["product_price"];
                 $product_code  = $_POST["product_code"];
                 $weight        = $_POST["weight"];
 
-                $filename      = $_FILES["product_img"]["name"];
+
+                $image_name      = $_FILES["product_img"]["name"];
                 $tmp_name=$_FILES["product_img"]['tmp_name'];
-                $destination   = "../assets/images./". $filename;
-                $upload=move_uploaded_file($tmp_name,$filename);
+                $destination   = "../assets/images./". $image_name;
+                $upload=move_uploaded_file($tmp_name,$destination);
+
+
 
                 $created_at    =  date("Y-m-d H:i:s");
-                $created_by    = $_SESSION["login_id"];
+                $created_by    = $_SESSION["login_user_type"];
                 
 
-        //  call function add data validation
-              $add_data_validation =   Add_validation();
-              $data = [];
+            //  call function add data validation
+              $add_data_validation =   Add_stock_validation();
 
             if($add_data_validation->status == "success"){
                 $data = [
                     "product_sl"    => $product_sl,
                     "product_name"  => $product_name,
-                    "product_price"      => $product_price,
-                    "product_code"            => $product_code,
-                    "weight" => $weight,
-                    "product_img"  => $filename,
+                    "quantity"      => $quantity,
+                    "dp"            => $dp,
+                    "product_price" => $product_price,
+                    "product_code"  => $product_code,
+                    "weight"        => $weight,
+                    "product_img"   => $image_name,
                     "created_at"   => $created_at,
                     "created_by"   => $created_by
                 ];
 
-                $store_data =  store_data($table, $data);
-                if($store_data->status == "success"){
-                 $_SESSION["success"] = true;
-                 $_SESSION["message"]  = $store_data->message;
-               }else{
-                 $_SESSION["error"]    = true;
-                 $_SESSION["message"]  = $store_data->message;
+                if($upload){
+                    $store_data =  store_data($table, $data);
+
+                    if($store_data->status == "success"){
+                        $_SESSION["success"] = true;
+                        $_SESSION["message"]  = $store_data->message;
+                    }else{
+                        $_SESSION["error"]    = true;
+                        $_SESSION["message"]  = $store_data->message;
+                    }
                 }
+
             }
-              
+                
+        
     }
+              
 
 
     // create a function for add product data validation
-        function Add_validation(){
-            global $unic_filename;
+        function Add_stock_validation(){
             $error = false;
             $required     = " Is Required";
             
