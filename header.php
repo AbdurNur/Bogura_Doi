@@ -6,7 +6,7 @@ include "function/utilitis.php";
 include "function/crud.php";
 include "function/login_process.php";
 include "function/registration_process.php";
-
+include "function/contact_process.php";
 
 ?>
 
@@ -32,9 +32,6 @@ include "function/registration_process.php";
 
     <!-- custom css -->
     <link rel="stylesheet" href="assets/css/style.css">
-
-
-
 </head>
 <body>
     

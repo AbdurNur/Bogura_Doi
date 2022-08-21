@@ -4,16 +4,14 @@
                         'oder_status'=>'no_dalivered'
 
                     ]; 
-                                       
+                    
+                    // notification
                     $data = get_table_total_row_count($tabe_name,$where);
 
 
 
-
+                    // Message
                     $tabe_name = 'ask_question';
-                    $cloum=['replay_status'];
-                    $slect=get_data($tabe_name,$cloum);
-
                     $where=[
                       'replay_status'=>'not_success',
                       
@@ -72,17 +70,7 @@
        <a class="nav-link" data-toggle="dropdown" href="#">
          <i class="far fa-comments"></i>
          <span class="badge badge-danger navbar-badge"><?php
-         if($slect->replay_status=='not_success'){
-          echo $messeage ;
-
-         }else{
-          echo '0' ;
-
-
-         } 
-         
-         
-         
+          echo $messeage;
          ?></span>
        </a>
        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
