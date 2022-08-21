@@ -2,7 +2,7 @@
 
     if(isset($_POST["add_stock"]) && !empty($_POST["add_stock"])){
    
-                $table         = "stock";
+               
                 $product_sl    = $_POST["product_sl"];
                 $product_name  = $_POST["product_name"];
                 $quantity      = $_POST["quantity"];
@@ -10,86 +10,111 @@
                 $product_price = $_POST["product_price"];
                 $product_code  = $_POST["product_code"];
                 $weight        = $_POST["weight"];
-
-
-                    
-                    
-                // [product_img] => Array
-                // (
-                //     [name] => doi_1.png
-                //     [full_path] => doi_1.png
-                //     [type] => image/png
-                //     [tmp_name] => D:\localserver\tmp\phpEB04.tmp
-                //     [error] => 0
-                //     [size] => 226192
-                // )
-        
-
-
-
-                $image_name      = $_FILES["product_img"]["name"];
-                $image_size      = $_FILES["product_img"]["size"];
-                $tmp_name=$_FILES["product_img"]['tmp_name'];
-                $destination   = "../assets/images./". $image_name;
-                $upload=move_uploaded_file($tmp_name,$destination);
-
-
-
                 $created_at    =  date("Y-m-d H:i:s");
                 $created_by    = $_SESSION["login_user_type"];
                 
 
             //  call function add data validation
-              $add_data_validation =   Add_stock_validation();
+            $add_data_validation =   Add_stock_validation();
+
 
             if($add_data_validation->status == "success"){
-                $data = [
-                    "product_sl"    => $product_sl,
-                    "product_name"  => $product_name,
-                    "quantity"      => $quantity,
-                    "dp"            => $dp,
-                    "product_price" => $product_price,
-                    "product_code"  => $product_code,
-                    "weight"        => $weight,
-                    "product_img"   => $image_name,
-                    "created_at"   => $created_at,
-                    "created_by"   => $created_by
-                ];
+               
 
-                if($upload){
+                $fileinfo = @getimagesize($_FILES["product_img"]["tmp_name"]);
+
+    
+
+                $width = $fileinfo[0];
+                $height = $fileinfo[1];
+               
+                
+                $allowed_image_extension = array(
+                    "png",
+                    "jpg",
+                    "jpeg"
+                );
+                
+                // Get image file extension
+                $file_extension = pathinfo($_FILES["product_img"]["name"], PATHINFO_EXTENSION);
+            
+               
+                
+                // Validate file input to check if is not empty
+                if (! file_exists($_FILES["product_img"]["tmp_name"])) {
+                    $_SESSION["error"]    = true;
+                    $_SESSION["message"]  = 'Choose image file to upload.';
+
+
                     
+                } // Validate file input to check if is with valid extension
+                else if (! in_array($file_extension, $allowed_image_extension)) {
+                    $_SESSION["error"]    = true;
+                    $_SESSION["message"]  = 'Upload valid images. Only PNG and JPEG are allowed.';
+                  
+                }    
+                
+                // Validate image file size
+                else if (($_FILES["product_img"]["size"] > 5000000)) {
+                    $_SESSION["error"]    = true;
+                    $_SESSION["message"]  = 'Image size exceeds 5MB';
+                    
+                }    
+                
+                // Validate image file dimension
+                else if ($width > "500" || $height > "500") {
+                    $_SESSION["error"]    = true;
+                    $_SESSION["message"]  = 'Image dimension should be within 500X500';
 
-                        if($image_size<=5000){
+                    
+                } else {
+                    $target   = "../assets/images./". $image_name;
+                    
+                    if (move_uploaded_file($_FILES["product_img"]["tmp_name"], $target)) {
+                        $table_name         = "stock";
 
+                        $data = [
+                            "product_sl"    => $product_sl,
+                            "product_name"  => $product_name,
+                            "quantity"      => $quantity,
+                            "dp"            => $dp,
+                            "product_price" => $product_price,
+                            "product_code"  => $product_code,
+                            "weight"        => $weight,
+                            "product_img"   => $image_name,
+                            "created_at"   => $created_at,
+                            "created_by"   => $created_by
+                        ];
 
-                            $store_data =  store_data($table, $data);
+                        $store_data =  store_data($table_name, $data);
 
-                            if($store_data->status == "success"){
-                                $_SESSION["success"] = true;
-                                $_SESSION["message"]  = $store_data->message;
-                            }else{
-                                $_SESSION["error"]    = true;
-                                $_SESSION["message"]  = $store_data->message;
-                            }
-
-
+                        if($store_data->status == "success"){
+                            $_SESSION["success"] = true;
+                            $_SESSION["message"]  = $store_data->message;
                         }else{
                             $_SESSION["error"]    = true;
-                            $_SESSION["message"]  = 'Image Size Must Be 500px/500px!';
-
-
-
-
-
+                            $_SESSION["message"]  = $store_data->message;
                         }
 
 
+                        
+                    } else {
+                        $_SESSION["error"]    = true;
+                        $_SESSION["message"]  = 'Problem in uploading image files';
 
-                   
+                       
+                    }
                 }
-
+            
+            
+            
             }
-                
+            
+
+
+
+
+              
         
     }
               
