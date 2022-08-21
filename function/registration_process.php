@@ -101,6 +101,7 @@ function registration_validation(){
         if (preg_match("/^(?:\+88|88)?(01[3-9]\d{8})$/", $number)){
             $_SESSION['form_field']['password']     =   $_POST['password'];
         }else{
+            
             $_SESSION["error_field"]["number"] = " THe number must be from Bangladeshi!";
         }  
     }
@@ -113,7 +114,7 @@ function registration_validation(){
 
             $_SESSION['form_field']['password']     =   $_POST['password'];
         }else{
-
+             $error = true;
             $_SESSION["error_field"]["password"] =   "password length must have 8 charecter";
         }    
     }

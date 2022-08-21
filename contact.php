@@ -14,7 +14,7 @@ include "top_nav.php"
 
     <section class="bg-light vh-100">
         <div class="container py-5">
-            <div class="row d-flex align-items-center justify-content-center">
+            <div class="row d-flex align-items-center justify-content-center mt-5">
 
                 <!--Grid column-->
                 <div class="col-md-6">

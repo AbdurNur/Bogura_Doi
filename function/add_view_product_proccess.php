@@ -38,14 +38,10 @@
                 // Get image file extension
                 $file_extension = pathinfo($_FILES["product_img"]["name"], PATHINFO_EXTENSION);
             
-               
-                
                 // Validate file input to check if is not empty
                 if (! file_exists($_FILES["product_img"]["tmp_name"])) {
                     $_SESSION["error"]    = true;
                     $_SESSION["message"]  = 'Choose image file to upload.';
-
-
                     
                 } // Validate file input to check if is with valid extension
                 else if (! in_array($file_extension, $allowed_image_extension)) {
@@ -66,7 +62,6 @@
                     $_SESSION["error"]    = true;
                     $_SESSION["message"]  = 'Image dimension should be within 500X500';
 
-                    
                 } else {
                     $target   = "../assets/images./". $image_name;
                     
@@ -96,30 +91,18 @@
                             $_SESSION["message"]  = $store_data->message;
                         }
 
-
-                        
                     } else {
                         $_SESSION["error"]    = true;
-                        $_SESSION["message"]  = 'Problem in uploading image files';
-
-                       
+                        $_SESSION["message"]  = 'Problem in uploading image files';                    
                     }
-                }
-            
-            
-            
+                }          
+            }else{
+                $_SESSION["error"]   = true;
+                $_SESSION["message"] = "Field not must be empty !";
             }
-            
-
-
-
-
-              
-        
+               
     }
               
-
-
     // create a function for add product data validation
         function Add_stock_validation(){
             $error = false;
@@ -184,8 +167,8 @@
             }
  
             if($error){
-                $response     = (object)[
-                "status"   => "error",
+                $response      = (object)[
+                "status"       => "error",
                 ];   
 
                 return $response;

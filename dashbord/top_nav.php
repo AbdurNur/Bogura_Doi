@@ -36,7 +36,7 @@
        <a href="shop.php" class="nav-link">Shop</a>
      </li>
      <li class="nav-item d-none d-sm-inline-block">
-       <a href="admin_registration.php" class="nav-link">Add User</a>
+       <a href="admin_registration.php" class="nav-link">Add Employee</a>
      </li>
      
    </ul>

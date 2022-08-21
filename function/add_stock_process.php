@@ -2,18 +2,6 @@
 
     if(isset($_POST["add_product"]) && !empty($_POST["add_product"])){
         
-       
-
-
-  
-
-                
-        // echo "<pre>";
-        // print_r($_POST);
-        // echo "</pre>";
-        // exit;
-        
-            
                 $table         = "stock";
               
                 $product_name       = $_POST["product_name"];
@@ -29,8 +17,6 @@
                 $add_data_validation =   Add_validation();
                 
                
-                
-
                 if($add_data_validation->status == "success"){
 
                     $wherw=[
@@ -52,7 +38,6 @@
                             if($product_name_code){
 
 
-                                
                                     $quantity           = $product_name_code->quantity; 
                                     $old_quantity           = $_POST["quantity"]; 
                                     $new_quantity          =$old_quantity+ $quantity;
@@ -84,6 +69,9 @@
                             $_SESSION["message"]  = 'Product Name is Invalid';
 
                         }                        
+                }else{
+                    $_SESSION["error"]   = true;
+                    $_SESSION["message"] = "Field not must be empty !";
                 }              
     }
 

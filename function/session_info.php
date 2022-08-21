@@ -3,7 +3,6 @@
 
 function session_message(){
     
-
     if(isset($_SESSION['error']) && $_SESSION['error'] == true){ ?>
             <div class="alert alert-danger" role="alert">
                 <?php 
