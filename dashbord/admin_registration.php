@@ -18,8 +18,6 @@ include "top_nav.php";
 include "left_nav.php";
 
 
-
-
 ?>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
