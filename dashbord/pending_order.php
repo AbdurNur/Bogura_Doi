@@ -127,9 +127,17 @@ include "left_nav.php";
                                             </td> 
                                             
                                             <td>
+                                              <?php
+                                                if(isset($_SESSION['login_user_type']) && $_SESSION['login_user_type']=='3'){?>
+                                                  <a href="#" class="btn btn-success" >DELIVERDE</a> 
+                                                  
+                                                <?php }else{?>                                                 
                                                  <a href="#" class="btn btn-danger">Cancel</a>
                                                  <a href="#" class="btn btn-success" >Edit</a>
-                                                
+                                               <?php }
+
+                                              
+                                              ?>
                                                 
                                             </td>    
                                         </tr>

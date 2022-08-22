@@ -80,7 +80,7 @@ include "left_nav.php";
                                 
                               <div class="product-btn">
                                       <button class="btn btn-primary add-cart">Add To Cart</button>
-                                      <a href="product_view.php?id=<?php echo $value->id?>" class="btn btn-primary add-cart">View</a>
+                                      <a href="#" class="btn btn-primary add-cart">View</a>
                                   </div>
                             </div>
                           </div>

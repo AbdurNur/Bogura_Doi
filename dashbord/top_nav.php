@@ -1,13 +1,31 @@
 <?php
-                    $tabe_name = 'product_order';
-                    $where=[
-                        'oder_status'=>'no_dalivered'
+                   
+                    if($_SESSION['login_user_type']== '1' || $_SESSION['login_user_type']=='2'){
+                      $tabe_name = 'product_order';
+                      $where=[
+                          'oder_status'=>'no_dalivered'
+  
+                      ]; 
+                      
+                      //admin || maneger notification
+                      $data = get_table_total_row_count($tabe_name,$where);
 
-                    ]; 
+
+                    }else{
+                      $tabe_name = 'product_order';
+
+                      $where=[
+                        'oder_status'=>'pending'
+
+                      ]; 
                     
-                    // notification
-                    $data = get_table_total_row_count($tabe_name,$where);
+                      // employee notification
+                      $data = get_table_total_row_count($tabe_name,$where);
 
+
+                    }
+
+                    
 
 
                     // Message
@@ -35,85 +53,91 @@
      <li class="nav-item d-none d-sm-inline-block">
        <a href="shop.php" class="nav-link">Shop</a>
      </li>
-     <li class="nav-item d-none d-sm-inline-block">
-       <a href="admin_registration.php" class="nav-link">Add Employee</a>
-     </li>
+      <?php if(isset($_SESSION['login_user_type']) && $_SESSION['login_user_type']==1){ ?>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="admin_registration.php" class="nav-link">Add Employee</a>
+      </li>
+      <?php }  ?>
+      
      
    </ul>
 
    <!-- Right navbar links -->
    <ul class="navbar-nav ml-auto">
-     <!-- Navbar Search -->
-     <li class="nav-item">
-       <a class="nav-link" data-widget="navbar-search" href="#" role="button">
-         <i class="fas fa-search"></i>
-       </a>
-       <div class="navbar-search-block">
-         <form class="form-inline">
-           <div class="input-group input-group-sm">
-             <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-             <div class="input-group-append">
-               <button class="btn btn-navbar" type="submit">
-                 <i class="fas fa-search"></i>
-               </button>
-               <button class="btn btn-navbar" type="button" data-widget="navbar-search">
-                 <i class="fas fa-times"></i>
-               </button>
-             </div>
-           </div>
-         </form>
-       </div>
-     </li>
-
-     <!-- Messages Dropdown Menu -->
-     <li class="nav-item dropdown">
-       <a class="nav-link" data-toggle="dropdown" href="#">
-         <i class="far fa-comments"></i>
-         <span class="badge badge-danger navbar-badge"><?php
-          echo $messeage;
-         ?></span>
-       </a>
-       <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-         <a href="#" class="dropdown-item">
-           <!-- Message Start -->
-           <div class="media">
-             
-             <div class="media-body">
-               <h3 class="dropdown-item-title">
-               <?php echo $messeage ?>  Message
-                 
-                 <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
-               </h3>
-              
-             </div>
-           </div>
-           <!-- Message End -->
-         </a>
-         
-       </div>
-     </li>
+     
+        <!-- Messages Dropdown Menu -->
+      <?php
+        if($_SESSION['login_user_type']== '1' || $_SESSION['login_user_type']=='2'){?>
+            <li class="nav-item dropdown">
+              <a class="nav-link" data-toggle="dropdown" href="#">
+                <i class="far fa-comments"></i>
+                <span class="badge badge-danger navbar-badge"><?php
+                  echo $messeage;
+                ?></span>
+              </a>
+              <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                <a href="seen_massege.php" class="dropdown-item">
+                  <!-- Message Start -->
+                  <div class="media">
+                    
+                    <div class="media-body">
+                      <h3 class="dropdown-item-title">
+                        <?php echo $messeage ?>  Message
+                        
+                        <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
+                      </h3>
+                      
+                    </div>
+                  </div>
+                  <!-- Message End -->
+                </a>
+                
+              </div>
+            </li>
+          <?php
+        }     
+      ?>
      <!-- Notifications Dropdown Menu -->
-     <li class="nav-item dropdown">
-       <a class="nav-link" data-toggle="dropdown" href="#">
-         <i class="far fa-bell"></i>
-         <span class="badge badge-warning navbar-badge"><?php print $data  ?></span>
-       </a>
-       <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-         <span class="dropdown-item dropdown-header"><?php print $data  ?> Notifications</span>
-         <div class="dropdown-divider"></div>
-         <a href="#" class="dropdown-item">
-          <i class="fa-solid fa-gift"></i> <?php print $data  ?> New Order
-           
-         </a>
+     
+          <li class="nav-item dropdown">
+            <a class="nav-link" data-toggle="dropdown" href="#">
+              <i class="far fa-bell text-danger"></i>
+              <span class="badge badge-warning navbar-badge"><?php print $data  ?></span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+              <span class="dropdown-item dropdown-header"><?php print $data  ?> Notifications</span>
+              <div class="dropdown-divider"></div>
+              <?php
+                    if($_SESSION['login_user_type']=='1' || $_SESSION['login_user_type']=='2' ){?>
+                      <a href="new_order.php" class="dropdown-item">
+                        <i class="fa-solid fa-gift"></i> <?php print $data  ?> New Order           
+                      </a>  
+
+
+                      <?php }
+                      
+                      
+                      elseif($_SESSION['login_user_type']=='3'){?>
+                      <a href="pending_order.php" class="dropdown-item">
+                        <i class="fa-solid fa-gift"></i> <?php print $data  ?> Pending Order 
+                      </a>    
+
+
+                      <?php 
+                    }
+              
+              ?>
+                              
+              </div>
+          </li>
          
-         
-       </div>
-     </li>
+     
+    <!-- full Scren Button -->
      <li class="nav-item">
        <a class="nav-link" data-widget="fullscreen" href="#" role="button">
          <i class="fas fa-expand-arrows-alt"></i>
        </a>
-     </li>
+      </li>
 
    </ul>
  </nav>

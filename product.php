@@ -20,8 +20,9 @@
                     foreach($data as $value){?>
 
                     
-                        <!-- Grid column -->
-                        <div class="col-lg-3 col-md-6 mb-4 d-flex  align-items-start">
+                        
+                            <!-- Grid column -->
+                            <div class="col-lg-3 col-md-6 mb-4 d-flex  align-items-start">
                                 <!-- Card -->
                                 <div class="card align-items-center flex-wrap">
                                     <!-- Card image -->
@@ -38,12 +39,16 @@
                                             <strong><?php echo $value->product_price?> টাকা</strong>
                                         </h5>
                                         <div class="product-btn">
-                                            <button class="btn btn-primary add-cart">Add To Cart</button>
+                                            <form method="POST">
+                                                <input type="hidden" id="custId" name="order_id" value=<?php echo $value->id?>>                                   
+                                                <input type="submit" class="btn btn-primary  add-cart" name="card" value="Add To Cart">
+                                            </form>
                                             <a href="product_view.php?id=<?php echo $value->id?>" class="btn btn-primary add-cart">View</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                        
 
                     
 

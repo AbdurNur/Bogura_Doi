@@ -7,6 +7,8 @@ include "function/crud.php";
 include "function/login_process.php";
 include "function/registration_process.php";
 include "function/contact_process.php";
+include "function/add_to_card_proccess.php";
+include "function/settings.php";
 
 ?>
 
@@ -16,9 +18,9 @@ include "function/contact_process.php";
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Doi</title>
+    <title> <?php echo $_SESSION['tittle']; ?></title>
     <!-- favicon -->
-    <link rel="icon" type="image/x-icon" href="doi_img/bogra-doi-com-logo.jpg">
+    <link rel="icon" type="image/x-icon" href="assets/images/<?php echo $_SESSION['icon'];?>">
 
     <!-- bootstrap_5 css -->
      <link rel="stylesheet" href="theme/plugins/bootstrap_5/bootstrap.css">

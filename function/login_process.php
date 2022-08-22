@@ -50,9 +50,9 @@
 
 
                         $is_login_error         = false;
-                        $message                =   "Login was successfull";
-                        $_SESSION['success']    =   'success';
-                        $_SESSION['message']    =   $message;
+                        // $message                =   "Login was successfull";
+                        // $_SESSION['success']    =   'success';
+                        // $_SESSION['message']    =   $message;
     
     
                         $_SESSION['login_status'] =1;
@@ -86,13 +86,13 @@
 
             if($is_login_error==false){
                
-                if($_SESSION['login_user_type']== "3"){
+                if($_SESSION['login_user_type']== "4"){
                     header('Location:index.php');
                     exit;
                 
     
                 }
-                if($_SESSION['login_user_type']== "1"||"2"){
+                if($_SESSION['login_user_type']== "1"||"2"||"3"){
                     header('Location:./dashbord/dasbord.php');
                     exit;
                     

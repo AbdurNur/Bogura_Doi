@@ -15,9 +15,12 @@ if(!isset( $_SESSION['login_status'])){
 include '../function/session_info.php';
 include '../function/utilitis.php';
 include '../function/crud.php';
+include "../function/settings.php";
 include "../function/add_view_product_proccess.php";
 include "../function/add_stock_process.php";
 include "../function/registration_process.php";
+
+include "../function/edit_delete_process.php";
 
 
 
@@ -32,7 +35,10 @@ include "../function/registration_process.php";
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Boguradoighor</title>
+  
+  <title> <?php echo $_SESSION['tittle']; ?></title>
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="../assets/images/<?php echo $_SESSION['icon'];  ?>">
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">

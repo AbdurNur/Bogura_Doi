@@ -16,7 +16,7 @@ if(isset($_POST["register"]) && !empty($_POST["register"])){
  $address           =  $_POST["address"];
  $permanent_address =  $_POST["permanent_address"];
  $created_at        =  date("Y-m-d H:i:s");
- $user_type         = 3 ;
+ $user_type         = 4 ;
 
  $validation_data =  registration_validation();
 
@@ -43,10 +43,10 @@ if(isset($_POST["register"]) && !empty($_POST["register"])){
 
     if($store_data->status == "success"){
         $_SESSION["success"] = true;
-        $_SESSION["message"]  = $store_data->message;
+        $_SESSION["message"]  = 'Registration Success';
     }else{
         $_SESSION["error"]    = true;
-        $_SESSION["message"]  = $store_data->message;
+        $_SESSION["message"]  = 'Registration Faild !';
     }
  
 }
@@ -147,6 +147,9 @@ function registration_validation(){
          return $response;
     }
 }
+
+
+
 
 
 ?>

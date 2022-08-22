@@ -111,26 +111,27 @@ include "left_nav.php";
                                             <td><?php echo $value->oder_status ?></td>
                                             <td><?php echo $value->order_date ?></td>                                                      
                                             <td>
-                                                <?php
+                                              <?php
                                                 if(!empty($value->dalivery_date)){
-                                                    echo $value->dalivery_date;
-
-
+                                                  echo $value->dalivery_date;
                                                 }else{
-                                                    echo "Delevery Not Yet";
-
-
-                                                }
-                                            
-                                            
-                                                ?>
-                                            </td> 
-                                            
+                                                  echo "Delevery Not Yet";
+                                                }                                                                                      
+                                              ?>
+                                            </td>                                             
                                             <td>
+                                              <?php
+                                                if(isset($_SESSION['login_user_type']) && $_SESSION['login_user_type']=='3'){?>
+                                                  <a href="#" class="btn btn-success" >DELIVERDE</a> 
+                                                  
+                                                <?php }else{?>                                                 
                                                  <a href="#" class="btn btn-danger">Cancel</a>
                                                  <a href="#" class="btn btn-success" >Edit</a>
-                                                
-                                                
+                                               <?php }
+
+                                              
+                                              ?>
+                                                                                                                                            
                                             </td>    
                                         </tr>
                                     <?php } ?>

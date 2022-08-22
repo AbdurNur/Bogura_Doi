@@ -97,10 +97,9 @@ include "left_nav.php";
      </div>
     </div>
 </div>
+
+
 <?php
-
-
-
 // include footer
 include "footer.php";
 
