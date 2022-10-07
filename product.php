@@ -13,9 +13,11 @@
         <div class="row">
 
             <?php
+                $table_name='stock';
+                $order='ASC';
+                $order_BY='product_sl';
 
-
-                $data= get_all_data('stock');
+                $data= get_all_data($table_name,);
                 if($data){
                     foreach($data as $value){?>
 

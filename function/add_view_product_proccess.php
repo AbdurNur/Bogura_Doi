@@ -63,6 +63,8 @@
                     $_SESSION["message"]  = 'Image dimension should be within 500X500';
 
                 } else {
+                    $image_name=$_FILES["product_img"]["name"];
+
                     $target   = "../assets/images./". $image_name;
                     
                     if (move_uploaded_file($_FILES["product_img"]["tmp_name"], $target)) {
