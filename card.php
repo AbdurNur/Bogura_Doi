@@ -26,32 +26,32 @@ $total=0;
                 <div class="card shadow-lg ">
 
                     <div class="row justify-content-around">
-                        <div class="col col-md-6">
-                            <div class="col">
+                        <div class="col col-md-6 ">
+                            <div class="col p-5">
                                 <p class="text-muted space mb-0 shop"> Order No.78618K</p>
 
                             </div>
 
                         </div>
-                        <div class="col col-md-6 text-start">
+                        <div class="col col-md-6 text-start p-5">
                             <input type="submit" class="btn btn-danger" name="order_cancel" value="ODER CANCEL">
 
                         </div>
 
-                        <div class="col-md-6">
+                        <div class="col-md-6 p-5">
 
 
                             <div class="mb-3">
-                                <label for="exampleInputPassword1" class="form-label">Reciver Name</label>
-                                <input type="text" class="form-control" id="exampleInputPassword1">
+                                <label for="" class="form-label">Reciver Name</label>
+                                <input type="text" name="reciver_name" class="form-control" id="name">
                             </div>
                             <div class="mb-3">
-                                <label for="exampleInputPassword1" class="form-label">Reciver Contact</label>
-                                <input type="text" class="form-control" id="exampleInputPassword1">
+                                <label for="" class="form-label">Reciver Contact</label>
+                                <input type="text" name="reciver_contact" class="form-control" id="">
                             </div>
                             <div class="mb-3">
-                                <label for="exampleInputPassword1" class="form-label">Reciver Address</label>
-                                <input type="text" class="form-control" id="exampleInputPassword1">
+                                <label for="" class="form-label">Reciver Address</label>
+                                <textarea class="form-control" name="reciver_address" id="" rows="3"></textarea>
                             </div>
 
 
@@ -140,6 +140,7 @@ $total=0;
                                                     <p class="mb-1"><b><?php echo$commission?> TK</b></p>
                                                 </div>
                                             </div>
+                                            <hr class="my-0">
                                             <div class="row justify-content-between">
                                                 <div class="col-4">
                                                     <p><b>Total</b></p>
@@ -154,6 +155,12 @@ $total=0;
                                             <hr class="my-0">
                                             
                                             
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col col-md-12 p-5">
+                                            <input type="submit"class="btn  btn-success" name='confirm_order' value="Submit">
+
                                         </div>
                                     </div>
                                 </div>
