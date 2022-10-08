@@ -39,7 +39,7 @@ $oder_data=get_all_data('product_order',$where);
                 if($oder_data){
                     $sl=1;
                     ?>
-                        <table class="table table-bordered">
+                        <table class="table table-bordered" id='data_table'>
                             <thead>
                                 <tr>
                                     <th scope="col">SL</th>

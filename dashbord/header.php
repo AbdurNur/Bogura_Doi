@@ -62,6 +62,7 @@ include "../function/edit_delete_process.php";
   <link rel="stylesheet" href="theme/plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="theme/plugins/summernote/summernote-bs4.min.css">
+  <link rel="stylesheet" href="theme/plugins/datatables/datatables.min.css">
 
   <!-- Custom css -->
   <link rel="stylesheet" href="../assets/css/style.css">

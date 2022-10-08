@@ -78,7 +78,7 @@ include "left_nav.php";
             
               ?>
                 
-                <table class="table table-striped table-hover table-bordered">
+                <table class="table table-striped table-hover table-bordered" id='data_table'>
               
                   <thead>
                     <tr>

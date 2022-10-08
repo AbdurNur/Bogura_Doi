@@ -59,7 +59,7 @@ include "left_nav.php";
                 if($message){
                     $sl=1;
                     ?>
-                        <table class="table table-bordered">
+                        <table class="table table-bordered" id='data_table'>
                             <thead>
                                 <tr>
                                     <th scope="col">SL</th>

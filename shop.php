@@ -17,6 +17,12 @@ include "top_nav.php"
         <?php 
             include "product.php"
         ?>
+
+        
+
+
+
+
 <!-- ============================= product section  End=========================== -->
 
 <!-- Footer Part Start-->

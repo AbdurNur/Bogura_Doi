@@ -43,7 +43,7 @@ $oder_dataa = get_all_data('product_order', $where, $cloums);
                         ?>
                         <?php if ($value->oder_status == 'no_dalivered') { ?>
 
-                            <table class="table table-bordered">
+                            <table class="table table-bordered" id='data_table'>
                                 <thead>
                                     <tr>
                                         <th scope="col">SL</th>
