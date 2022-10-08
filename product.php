@@ -44,7 +44,7 @@
                                         <input type="hidden" id="custId" name="hidden_price" value=<?php echo $value->product_price ?>>
                                         <input type="hidden" id="custId" name="hidden_image" value=<?php echo $value->product_img?>>
 
-                                        <input type="submit" class="btn btn-primary  add-cart" name="add_to_cart" value="Add_To_Cart">
+                                        <input type="submit" class="btn btn-primary  add-cart" name="add_to_cart" value="Add To Cart">
                                     </form>
                                     <a href="product_view.php?id=<?php echo $value->id ?>" class="btn btn-primary add-cart">View</a>
                                 </div>

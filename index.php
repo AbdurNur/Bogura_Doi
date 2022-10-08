@@ -80,9 +80,11 @@ include "top_nav.php";
                 <div class="col-md-6">
                     <h3>Location</h3>
                     <p>
-                        <b>Hot line: </b>012345678 <br>
-                        <b>Dhaka Office:</b> 697/1, West Kazipara, Mirpur, Dhaka 1216 <br>
-                        <b>Email:</b> bogurardoi@dogura.com
+                        
+                        <b>Service : 10am - 10pm </b> <br>
+                        <b>Hot line :</b> 01724026444 <br>
+                        <b>Showroom :</b> 14/1, Ovaydaslen, Tikatuli, Dhaka 1212 <br>
+                        <b>Email :</b> bogurardoi@gmail.com
                     </p>
                     
                 </div>

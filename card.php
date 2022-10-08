@@ -2,18 +2,18 @@
 include "header.php";
 include 'top_nav.php';
 // Remove
-if( isset($_GET["action"])) {
+if (isset($_GET["action"])) {
     if ($_GET["action"] == "delete") {
         foreach ($_SESSION["shopping_cart"] as $keys => $values) {
             if ($values["item_id"] == $_GET["id"]) {
                 unset($_SESSION["shopping_cart"][$keys]);
-                
+
                 echo '<script>window.location="card.php"</script>';
             }
         }
     }
 }
-$total=0;
+$total = 0;
 
 ?>
 
@@ -29,18 +29,13 @@ $total=0;
                         <div class="col col-md-6 ">
                             <div class="col p-5">
                                 <p class="text-muted space mb-0 shop"> Order No.78618K</p>
-
                             </div>
-
                         </div>
                         <div class="col col-md-6 text-start p-5">
                             <input type="submit" class="btn btn-danger" name="order_cancel" value="ODER CANCEL">
-
                         </div>
-
+                        <!-- reciver information Start -->
                         <div class="col-md-6 p-5">
-
-
                             <div class="mb-3">
                                 <label for="" class="form-label">Reciver Name</label>
                                 <input type="text" name="reciver_name" class="form-control" id="name">
@@ -53,11 +48,9 @@ $total=0;
                                 <label for="" class="form-label">Reciver Address</label>
                                 <textarea class="form-control" name="reciver_address" id="" rows="3"></textarea>
                             </div>
-
-
-
-
                         </div>
+                        <!-- reciver information End -->
+
                         <div class="col-md-6">
                             <div class="card border-0 ">
 
@@ -66,35 +59,24 @@ $total=0;
                                     <hr class="my-2">
                                 </div>
                                 <div class="card-body pt-0">
-                                    <?php foreach ($_SESSION["shopping_cart"] as $keys => $values) {  
-                                        
+                                    <?php foreach ($_SESSION["shopping_cart"] as $keys => $values) {
                                         $total = $total + ($values["item_quantity"] * $values["item_price"]);
-
-                                        $_SESSION["total"]=$total;
-
-                                        
-                                        ?>
+                                    ?>
                                         <div class="row  justify-content-between">
-                                            <div class="col-auto col-md-7">
-                                                <div class="media flex-column flex-sm-row">
+                                            <div class="col-auto col-md-3">
+                                                <div class="media flex-column flex-sm-row p-2">
                                                     <img class=" img-fluid" src="assets/images/<?php echo $values["item_image"] ?>" width="62" height="62">
-
-                                                    <div class="media-body  my-auto">
-                                                        <div class="row ">
-                                                            <div class="col-auto">
-                                                                <p class="mb-0"><b><?php echo $values["item_name"]; ?></b></p><small class="text-muted">1 Week Subscription</small>
-                                                            </div>
-                                                        </div>
-                                                    </div>
                                                 </div>
                                             </div>
-
+                                            <div class="col-auto col-md-3">
+                                                <div class="media flex-column flex-sm-row p-2">
+                                                    <p class="mb-0 p-4"><b><?php echo $values["item_name"]; ?></b></p>
+                                                </div>
+                                            </div>
 
                                             <div class=" pl-0 flex-sm-col col-auto  my-auto">
                                                 <input type="submit" class="btn " name="add" value="+">
                                             </div>
-
-
 
                                             <div class=" pl-0 flex-sm-col col-auto  my-auto">
                                                 <p class="boxed-1"><?php echo $values["item_quantity"]; ?></p>
@@ -110,10 +92,7 @@ $total=0;
                                             <div class=" pl-0 flex-sm-col col-auto  my-auto ">
                                                 <a href="card.php?action=delete&id=<?php echo $values["item_id"]; ?>"><span class="btn btn-danger">Remove</span></a></td>
                                             </div>
-
-                                            
                                         </div>
-
                                     <?php } ?>
 
                                     <hr class="my-2">
@@ -124,7 +103,12 @@ $total=0;
                                                     <p class="mb-1"><b>Subtotal</b></p>
                                                 </div>
                                                 <div class="flex-sm-col col-auto">
-                                                    <p class="mb-1"><b><?php echo$_SESSION["total"]?>Tk</b></p>
+                                                    <p class="mb-1"><b>
+                                                    <?php
+                                                     echo $total ;
+                                                     
+                                                    
+                                                    ?>Tk</b></p>
                                                 </div>
                                             </div>
                                             <div class="row justify-content-between">
@@ -133,11 +117,11 @@ $total=0;
                                                 </div>
                                                 <div class="flex-sm-col col-auto">
                                                     <?php
-                                                    $total=$_SESSION["total"];
-                                                    $commission=$total*0.05
-                                                    
+
+                                                    $commission = $total * 0.05
+
                                                     ?>
-                                                    <p class="mb-1"><b><?php echo$commission?> TK</b></p>
+                                                    <p class="mb-1"><b><?php echo $commission ?> TK</b></p>
                                                 </div>
                                             </div>
                                             <hr class="my-0">
@@ -146,21 +130,23 @@ $total=0;
                                                     <p><b>Total</b></p>
                                                 </div>
                                                 <div class="flex-sm-col col-auto">
-                                                    <p class="mb-1"><b><?php
-                                                    $subtotoal=$total-$commission;
-                                                    echo $subtotoal;
-                                                    ?>TK</b></p>
+                                                    <p class="mb-1"><b>
+                                                        <?php
+                                                            $subtotoal = $total - $commission;
+                                                            echo $subtotoal;
+                                                            
+                                                            
+                                                        ?>TK</b>
+                                                     </p>
                                                 </div>
                                             </div>
                                             <hr class="my-0">
-                                            
-                                            
                                         </div>
                                     </div>
+
                                     <div class="row">
                                         <div class="col col-md-12 p-5">
-                                            <input type="submit"class="btn  btn-success" name='confirm_order' value="Submit">
-
+                                            <input type="submit" class="btn  btn-success" name='confirm_order' value="Submit">
                                         </div>
                                     </div>
                                 </div>

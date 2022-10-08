@@ -37,7 +37,7 @@
                                 <a class="nav-link" href="new_order.php">New Oder</a>
                                 <?php
                                 if( isset($_SESSION['order_id'])){ ?>                               
-                                    <a class="nav-link" href="card.php">Card</a>
+                                    <a class="nav-link" href="card.php">Cart</a>
                                 <?php } ?>
                                 
                                 <a class="nav-link" href="logut.php">Logut</a>
