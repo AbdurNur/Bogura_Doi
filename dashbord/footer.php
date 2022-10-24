@@ -1,7 +1,7 @@
   <footer class="main-footer">
     <div class="container">
       <div class="py-3 text-center">
-        © 2022 Copyright
+        © <?php echo date("Y");?> Copyright
         <a href="dasbord.php"> বগুড়ার দই </a>
       </div>
     </div>
@@ -17,7 +17,7 @@
 
   <!-- jQuery -->
   <script src="theme/plugins/jquery/jquery.min.js"></script>
-  
+
   <!-- jQuery UI 1.11.4 -->
   <script src="theme/plugins/datatables/datatables.min.js"></script>
 
@@ -30,6 +30,9 @@
 
   <!-- Bootstrap 4 -->
   <script src="theme/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- bootstrap-5 bundle js -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
   <!-- ChartJS -->
   <script src="theme/plugins/chart.js/Chart.min.js"></script>
   <!-- Sparkline -->
@@ -54,6 +57,8 @@
   <script src="theme/dist/js/demo.js"></script>
   <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
   <script src="theme/dist/js/pages/dashboard.js"></script>
+  <!-- Custom js -->
+  <script src="js/custom.js"></script>
 
   <script>
     function myFunction_2() {

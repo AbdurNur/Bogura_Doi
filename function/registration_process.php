@@ -147,9 +147,3 @@ function registration_validation(){
          return $response;
     }
 }
-
-
-
-
-
-?>

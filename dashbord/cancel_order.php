@@ -35,7 +35,7 @@ include "left_nav.php";
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="dasbord.php">Home</a></li>
-            <li class="breadcrumb-item active">New Order</li>
+            <li class="breadcrumb-item active">Cancel Order</li>
           </ol>
         </div><!-- /.col -->
       </div><!-- /.row -->
@@ -51,9 +51,7 @@ include "left_nav.php";
 
         <?php
         $where = [
-          'oder_status' => 'no_dalivered'
-
-
+          'oder_status' => 'cancel'
         ];
         $table_name = 'product_order';
         $total_order = get_all_data($table_name, $where);
@@ -82,9 +80,10 @@ include "left_nav.php";
                 <th scope="col">ORDER NO</th>
 
                 <th scope="col">ORDER STATUS</th>
+                <th scope="col">Remaeks</th>
                 <th scope="col">ORDER DATE</th>
-                <th scope="col">DELIVERED DATE</th>
-                <th scope="col">ACTION</th>
+
+
               </tr>
             </thead>
             <tbody>
@@ -92,15 +91,10 @@ include "left_nav.php";
               $mrp_total = 0;
               foreach ($total_order as $value) {
                 $mrp_total = $mrp_total + $value->total_price;
-
-
-
-
               ?>
                 <tr style="background-color:<?php echo $value->color_code ?>;">
-                  <th scope="row"><?php echo $sl++ ?></th>
+                  <td scope="row"><?php echo $sl++ ?></td>
                   <td><?php echo $value->order_by ?></td>
-
                   <td style="background-color:white;">
                     <img style="height: 50px; width: 50px;  " src="../assets/images/<?php echo $value->product_img ?>" class="card-img-top" alt="">
                   </td>
@@ -111,58 +105,33 @@ include "left_nav.php";
                   <td><?php echo $value->total_price ?></td>
                   <td><?php echo $value->order_no ?></td>
                   <td><?php echo $value->oder_status ?></td>
+                  <td><?php echo $value->comment ?></td>
                   <td><?php echo $value->order_date ?></td>
-                  <td>
-                    <?php
-                    if (!empty($value->dalivery_date)) {
-                      echo $value->dalivery_date;
-                    } else {
-                      echo "Delevery Not Yet";
-                    }
-                    ?>
-                  </td>
-                  <td>
-                    <?php
-                    if (isset($_SESSION['login_user_type']) && $_SESSION['login_user_type'] == '3') { ?>
-                      <a href="#" class="btn btn-success">DELIVERDE</a>
-                    <?php } else { ?>
-                      <a href="#" class="btn btn-danger">Cancel</a>
-                      <a href="#" class="btn btn-success">Edit</a>
-                      <form id="new_order">
-                        <input type="hidden" id="item_id" name="item_id" value=<?php echo $value->id ?>>
-                      </form>
-                      <button type="button" class="btn  btn-success " id="delivered">DELIVERED</button>
-                    <?php }
-                    ?>
-                  </td>
                 </tr>
               <?php } ?>
+
             </tbody>
             <tfoot>
               <tr>
                 <td colspan="7" class="text-center">
-                  <h1> Total New Order</h1>
+                  <h1> Total Cancel </h1>
                 </td>
                 <td><?php echo '=' . $mrp_total . '/=' ?></td>
-                <td colspan="5"></td>
+                <td colspan="4"></td>
               </tr>
+
             </tfoot>
           </table>
 
           <!-- end of foreach -->
 
-        <?php } else { ?>
-
-          <div>
-
-            <h1 class=" text-danger">NO NEW ORDER YET !</h1>
-          </div>
-
-
-
-
-
         <?php } ?>
+
+
+
+
+
+
 
 
 

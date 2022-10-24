@@ -3,11 +3,10 @@
 date_default_timezone_set('Asia/Dhaka');
 include "function/session_info.php";
 include "function/utilitis.php";
-include "function/crud.php";
+include "function/database_management.php";
 include "function/login_process.php";
 include "function/registration_process.php";
 include "function/contact_process.php";
-include "function/add_to_card_proccess.php";
 include "function/settings.php";
 
 ?>

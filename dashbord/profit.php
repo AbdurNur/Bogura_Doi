@@ -35,7 +35,7 @@ include "left_nav.php";
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="dasbord.php">Home</a></li>
-            <li class="breadcrumb-item active">New Order</li>
+            <li class="breadcrumb-item active">Profit</li>
           </ol>
         </div><!-- /.col -->
       </div><!-- /.row -->
@@ -51,9 +51,7 @@ include "left_nav.php";
 
         <?php
         $where = [
-          'oder_status' => 'no_dalivered'
-
-
+          'oder_status' => 'delivered'
         ];
         $table_name = 'product_order';
         $total_order = get_all_data($table_name, $where);
@@ -78,26 +76,37 @@ include "left_nav.php";
                 <th scope="col">QUANTITY</th>
                 <th scope="col">RATE</th>
                 <th scope="col">COMMISSION</th>
+                <th scope="col">TOTAL DP</th>
                 <th scope="col">TOTAL PRICE</th>
+                <th scope="col">PROFIT</th>
                 <th scope="col">ORDER NO</th>
 
-                <th scope="col">ORDER STATUS</th>
+
                 <th scope="col">ORDER DATE</th>
                 <th scope="col">DELIVERED DATE</th>
-                <th scope="col">ACTION</th>
+
               </tr>
             </thead>
             <tbody>
               <?php
-              $mrp_total = 0;
+
+
+              $total_commission = 0;
+              $total_dp = 0;
+              $total_mrp = 0;
+              $total_profit = 0;
+
               foreach ($total_order as $value) {
-                $mrp_total = $mrp_total + $value->total_price;
 
 
-
+                $total_commission = $total_commission + $value->commission;
+                $total_dp = $total_dp + $value->total_dp;
+                $total_mrp = $total_mrp + $value->total_price;
+                $profit = $value->total_price - $value->total_dp;
+                $total_profit = $total_profit + $profit;
 
               ?>
-                <tr style="background-color:<?php echo $value->color_code ?>;">
+                <tr>
                   <th scope="row"><?php echo $sl++ ?></th>
                   <td><?php echo $value->order_by ?></td>
 
@@ -108,9 +117,11 @@ include "left_nav.php";
                   <td><?php echo $value->quantity ?></td>
                   <td><?php echo $value->price ?></td>
                   <td><?php echo $value->commission ?></td>
+                  <td><?php echo $value->total_dp ?></td>
                   <td><?php echo $value->total_price ?></td>
+                  <td><?php echo $profit ?></td>
                   <td><?php echo $value->order_no ?></td>
-                  <td><?php echo $value->oder_status ?></td>
+
                   <td><?php echo $value->order_date ?></td>
                   <td>
                     <?php
@@ -119,31 +130,25 @@ include "left_nav.php";
                     } else {
                       echo "Delevery Not Yet";
                     }
+
+
                     ?>
                   </td>
-                  <td>
-                    <?php
-                    if (isset($_SESSION['login_user_type']) && $_SESSION['login_user_type'] == '3') { ?>
-                      <a href="#" class="btn btn-success">DELIVERDE</a>
-                    <?php } else { ?>
-                      <a href="#" class="btn btn-danger">Cancel</a>
-                      <a href="#" class="btn btn-success">Edit</a>
-                      <form id="new_order">
-                        <input type="hidden" id="item_id" name="item_id" value=<?php echo $value->id ?>>
-                      </form>
-                      <button type="button" class="btn  btn-success " id="delivered">DELIVERED</button>
-                    <?php }
-                    ?>
-                  </td>
+
+
                 </tr>
               <?php } ?>
+
             </tbody>
             <tfoot>
               <tr>
-                <td colspan="7" class="text-center">
-                  <h1> Total New Order</h1>
+                <td colspan="6" class="text-center">
+                  <h1> Total Success Sales</h1>
                 </td>
-                <td><?php echo '=' . $mrp_total . '/=' ?></td>
+                <td><?php echo '=' . $total_commission . ' TK' ?></td>
+                <td><?php echo '=' . $total_dp . ' TK' ?></td>
+                <td><?php echo '=' . $total_mrp . ' TK' ?></td>
+                <td><?php echo '=' . $total_profit . ' TK' ?></td>
                 <td colspan="5"></td>
               </tr>
             </tfoot>
@@ -151,18 +156,13 @@ include "left_nav.php";
 
           <!-- end of foreach -->
 
-        <?php } else { ?>
-
-          <div>
-
-            <h1 class=" text-danger">NO NEW ORDER YET !</h1>
-          </div>
-
-
-
-
-
         <?php } ?>
+
+
+
+
+
+
 
 
 

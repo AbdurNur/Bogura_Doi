@@ -2,7 +2,7 @@
 <section class="footer-copyright">
         <div class="container">
             <div class="py-3 text-center">
-                © 2022 Copyright
+                © <?php echo date("Y");?> Copyright
                 <a href="index.php"> বগুড়ার দই </a>
             </div>
         </div>
@@ -12,9 +12,14 @@
 <!-- bootstrap bundle js -->
 <script src="theme/plugins/bootstrap_5/bootstrap.min.js"></script>
 <!-- JQUERY  -->
-<script src="theme/plugins/jqurey/jquery-3.6.0.min.js"></script>
+<script src="theme/plugins/jqurey/jquery-3.6.1.min.js"></script>
 <!-- JQUERY UI -->
 <script src="assets/vendor/jquery-ui/jquery-ui.js"></script>
+<!-- Custom js -->
+<script src="assets/js/custom.js"></script>
+
+
+
 <script>
         function myFunction() {
             var password = document.getElementById("password_1");

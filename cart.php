@@ -1,18 +1,7 @@
 <?php
 include "header.php";
 include 'top_nav.php';
-// Remove
-if (isset($_GET["action"])) {
-    if ($_GET["action"] == "delete") {
-        foreach ($_SESSION["shopping_cart"] as $keys => $values) {
-            if ($values["item_id"] == $_GET["id"]) {
-                unset($_SESSION["shopping_cart"][$keys]);
 
-                echo '<script>window.location="card.php"</script>';
-            }
-        }
-    }
-}
 $total = 0;
 
 ?>
@@ -32,7 +21,8 @@ $total = 0;
                             </div>
                         </div>
                         <div class="col col-md-6 text-start p-5">
-                            <input type="submit" class="btn btn-danger" name="order_cancel" value="ODER CANCEL">
+                            <button type="button" class="btn btn-danger" id="order_cancel">ODER CANCEL</button>
+
                         </div>
                         <!-- reciver information Start -->
                         <div class="col-md-6 p-5">
@@ -90,7 +80,11 @@ $total = 0;
                                                 <p><b><?php echo $values["item_price"]; ?></b></p>
                                             </div>
                                             <div class=" pl-0 flex-sm-col col-auto  my-auto ">
-                                                <a href="card.php?action=delete&id=<?php echo $values["item_id"]; ?>"><span class="btn btn-danger">Remove</span></a></td>
+                                                <form id="item_remove_form">
+                                                    <input type="hidden" id="remove_item_id" name="remove_item_id" value=<?php echo $values["item_id"]?>>
+                                                </form>
+                                                <button type="button" class="btn  btn-danger " id="item_remove">Remove</button>
+                                                
                                             </div>
                                         </div>
                                     <?php } ?>
@@ -104,11 +98,11 @@ $total = 0;
                                                 </div>
                                                 <div class="flex-sm-col col-auto">
                                                     <p class="mb-1"><b>
-                                                    <?php
-                                                     echo $total ;
-                                                     
-                                                    
-                                                    ?>Tk</b></p>
+                                                            <?php
+                                                            echo $total;
+
+
+                                                            ?>Tk</b></p>
                                                 </div>
                                             </div>
                                             <div class="row justify-content-between">
@@ -131,13 +125,13 @@ $total = 0;
                                                 </div>
                                                 <div class="flex-sm-col col-auto">
                                                     <p class="mb-1"><b>
-                                                        <?php
+                                                            <?php
                                                             $subtotoal = $total - $commission;
                                                             echo $subtotoal;
-                                                            
-                                                            
-                                                        ?>TK</b>
-                                                     </p>
+
+
+                                                            ?>TK</b>
+                                                    </p>
                                                 </div>
                                             </div>
                                             <hr class="my-0">

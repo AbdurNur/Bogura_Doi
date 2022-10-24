@@ -23,7 +23,9 @@ include "top_nav.php";
                         Quibusdam vitae, culpa </p>
                     <a href="shop.php" type="button" class="btn btn-primary btn-rounded btn-md mt-3 ml-md-0">Shop
                         Now</a>
-                    <a href="register.php" type="button" class="btn btn-secondary mt-3 mx-3">Register</a>
+                    <?php if(! isset($_SESSION['login_status'])){ ?>
+                        <a href="register.php" type="button" class="btn btn-secondary mt-3 mx-3">Register</a>
+                    <?php }?>
                 </div>
                 <div class="col-lg-6 col-md-12 text-lg-end text-md-center text-sm-center">
                     <img src="assets/images/doi_1.png" class="img-fluid">

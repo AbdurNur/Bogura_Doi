@@ -38,14 +38,12 @@
                                     <strong><?php echo $value->product_price ?> টাকা</strong>
                                 </h5>
                                 <div class="product-btn">
-                                    <form method="POST">
-                                        <input type="hidden" id="custId" name="order_id" value=<?php echo $value->id ?>>
-                                        <input type="hidden" id="custId" name="hidden_name" value=<?php echo $value->product_name ?>>
-                                        <input type="hidden" id="custId" name="hidden_price" value=<?php echo $value->product_price ?>>
-                                        <input type="hidden" id="custId" name="hidden_image" value=<?php echo $value->product_img?>>
-
-                                        <input type="submit" class="btn btn-primary  add-cart" name="add_to_cart" value="Add To Cart">
+                                    <form id="item_add_form_<?php echo $value->id ?>">
+                                        <input type="hidden" id="item_id_<?php echo $value->id ?>" name="item_id" value=<?php echo $value->id ?>>
                                     </form>
+
+                                    <button type="button" class="btn btn-primary add-cart" id="add_to_cart_<?php echo $value->id ?>" onclick="add_to_cart('_<?php echo $value->id ?>')">Add To Cart</button>
+
                                     <a href="product_view.php?id=<?php echo $value->id ?>" class="btn btn-primary add-cart">View</a>
                                 </div>
                             </div>
@@ -62,7 +60,7 @@
             ?>
 
 
-            
+
         </div>
     </div>
 </section>

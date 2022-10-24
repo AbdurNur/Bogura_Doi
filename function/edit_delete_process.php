@@ -20,7 +20,6 @@
             $_SESSION["success"] = true;
             $_SESSION["message"]  = 'Delete Success';
         }
-
     }
     // Generel User Delete
     if(isset($_POST['user_delete_btn']) && !empty($_POST['user_delete_btn'])){
@@ -37,7 +36,6 @@
             $_SESSION["success"] = true;
             $_SESSION["message"]  = 'Delete Success';
         }
-
     }
     // Staff Delete
     if(isset($_POST['staff_delete_btn']) && !empty($_POST['staff_delete_btn'])){
