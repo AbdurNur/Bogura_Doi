@@ -81,12 +81,8 @@ include "left_nav.php";
                   <td>
                     <?php
                     if ($value->replay_status == 'not_success') { ?>
-                      <!-- click for Open Modal Btn  -->
-                      <form id="repley_from<?php $value->id ?>">
-                        <input type="hidden" id="question_id_<?php echo $value->id ?>" name="question_id" value=<?php echo $value->id ?>>
-
-                      </form>
-                      <button type="button" class="btn btn-primary" id="repley_<?php echo $value->id ?>" onclick="repley('<?php echo $value->id ?>')" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">REPLAY</button>
+                     
+                      <button type="button" class="btn btn-primary"  onclick="question('<?php echo $value->id ?>')" >REPLAY</button>
                     <?php }
                     ?>
                   </td>
@@ -103,7 +99,7 @@ include "left_nav.php";
       <div class="row">
 
         <!-- Modal start here -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="reply_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
@@ -111,48 +107,16 @@ include "left_nav.php";
                 <div class="text-white rounded-3 bg-primary" id="message"></div>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
-              <div class="modal-body">
+              <div class="modal-body" id="repley_modal_body">
 
-                
 
-                <!-- form start here -->
-                <form id="registration_form">
-                  <div class="mb-3">
-                    <label for="" class="col-form-label">Name:</label>
-                    <div class="form-control" id="name">
 
-                    </div>
-                  </div>
 
-                  <div class="mb-3">
-                    <label for="" class="col-form-label">E-mail:</label>
-                    <div class="form-control">
-
-                    </div>
-                  </div>
-
-                  <div class="mb-3">
-                    <label for="" class="col-form-label">Question:</label>
-                    <div class="form-control">
-
-                    </div>
-
-                  </div>
-
-                  <div class="mb-3">
-                    <label for="" class="col-form-label">Answer:</label>
-                    <div class="form-floating">
-                      <textarea class="form-control" id="answer" style="height: 100px"></textarea>
-                    </div>
-                    <span id="error_answer" class="error_style"></span>
-                  </div>
-                </form>
-                <!-- form end here -->
 
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" id="registration_btn">Submit</button>
+                <button type="button" class="btn btn-primary" id="repley_send_btn">Submit</button>
               </div>
             </div>
           </div>

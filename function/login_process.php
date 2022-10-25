@@ -22,6 +22,7 @@
         }
 
         if($validate_response->status == "success"){
+
             $where=[
                 'email'=>$email,
             ];
@@ -43,7 +44,7 @@
                     $where=[
                         'email'=>$login_password->email,
                     ];
-                    $cloum=['password','id','name','email','image','staff_id','user_type',];
+                    $cloum=['password','id','name','email','image','staff_id','user_type','number',];
     
                     $login_data=get_data('users',$where,$cloum);
                     if($login_data){
@@ -60,6 +61,7 @@
                         $_SESSION['login_id']           =$login_data->id;
                         $_SESSION['login_name']         =$login_data->name;
                         $_SESSION['login_email']        =$login_data->email;
+                       
                         $_SESSION['login_staff_id']     =$login_data->staff_id;
                         $_SESSION['login_user_type']    =$login_data->user_type;
                         $_SESSION['login_user_img']     =$login_data->image;

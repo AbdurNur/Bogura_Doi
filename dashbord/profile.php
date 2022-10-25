@@ -66,10 +66,10 @@ include "left_nav.php";
                                 <?php
 
                                 if (isset($_SESSION['login_user_type']) && $_SESSION['login_user_type'] == 1) { ?>
-                                    <img src="theme/dist/img/admin.png"  style="height: 200px; width: 200px;" class=" p-4 " alt="User Image">
+                                    <img src="theme/dist/img/admin.png" style="height: 200px; width: 200px;" class=" p-4 " alt="User Image">
 
                                 <?php } elseif (isset($_SESSION['login_user_type']) && $_SESSION['login_user_type'] == 2) { ?>
-                                    <img src="theme/dist/img/manager.png"  style="height: 200px; width: 200px;" class=" p-4" alt="User Image">
+                                    <img src="theme/dist/img/manager.png" style="height: 200px; width: 200px;" class=" p-4" alt="User Image">
 
 
                                 <?php } elseif (isset($_SESSION['login_user_type']) && $_SESSION['login_user_type'] == 3) { ?>
@@ -86,17 +86,28 @@ include "left_nav.php";
 
 
                                     <ul class="list-group list-group-flush">
-                                        
-                                        <li class="list-group-item">Name: <?php echo  $_SESSION['login_name']; ?></li>
-                                        <li class="list-group-item">Email: <?php echo  $_SESSION['login_email']; ?></li>
-                                        <li class="list-group-item">Contact: <?php echo  $_SESSION['login_email']; ?></li>
-                                        <li class="list-group-item">Staff Id: <?php echo  $_SESSION['login_staff_id']; ?></li>
-                                        <li class="list-group-item">Permanent Address: <?php echo  $_SESSION['login_staff_id']; ?></li>
-                                        <li class="list-group-item">Present Address: <?php echo  $_SESSION['login_staff_id']; ?></li>
+                                        <?php
+                                        $tabe_name = 'users';
+                                        $where = [
 
-                                        
-                                            <input type="hidden" name="login_user_id" id="login_user_id" value="<?php echo  $_SESSION['login_id']; ?>">
-                                        
+                                            'id' => $_SESSION['login_id']
+                                        ];
+                                        $cloum = ['name','email','number', 'staff_id', 'address','parmanent_address'];
+
+                                        $profile_data = get_data('users', $where, $cloum);
+
+                                        ?>
+
+                                        <li class="list-group-item">Name: <?php echo  $profile_data->name ?></li>
+                                        <li class="list-group-item">Email: <?php echo  $profile_data->email ?></li>
+                                        <li class="list-group-item">Contact: <?php echo  $profile_data->number ?></li>
+                                        <li class="list-group-item">Staff Id: <?php echo  $profile_data->staff_id ?></li>                                       
+                                        <li class="list-group-item">Present Address: <?php echo  $profile_data->address ?></li>
+                                        <li class="list-group-item">Permanent Address: <?php echo  $profile_data->parmanent_address ?></li>
+
+
+                                        <input type="hidden" name="login_user_id" id="login_user_id" value="<?php echo  $_SESSION['login_id']; ?>">
+
 
                                         <li class="list-group-item"><button type="button" class="btn btn-primary" id="edit_profile">Edit</button></li>
 
