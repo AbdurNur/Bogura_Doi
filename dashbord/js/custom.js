@@ -22,3 +22,41 @@ function repley(repley_id) {
         }
     });
 }
+
+
+// Edit Data Show From Database  
+
+$("#edit_profile").click(function () {
+    $.ajax({
+        url: "../function/profile_edit_proccess.php?process_type=edit_profile",
+        type: "post",
+        dataType: "html",
+        data: "login_user_id=" + $("#login_user_id").val(),
+
+        success: function (response) {
+        
+        
+            $("#profile_edit_view_modal").modal('show');
+            $("#profile_edit_body").html(response);
+
+            
+
+        }
+    });
+})
+
+// Edit Profile section
+$("#edit_submit_btn").click(function () {
+    $.ajax({
+        url: "function/profile_edit_proccess.php?process_type=edit_profile",
+        type: "post",
+        dataType: "json",
+        data: $("#profile_edit_form").serialize(),
+
+        success: function (response) {
+
+            
+
+        }
+    });
+})

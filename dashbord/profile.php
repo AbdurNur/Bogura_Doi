@@ -94,7 +94,11 @@ include "left_nav.php";
                                         <li class="list-group-item">Permanent Address: <?php echo  $_SESSION['login_staff_id']; ?></li>
                                         <li class="list-group-item">Present Address: <?php echo  $_SESSION['login_staff_id']; ?></li>
 
-                                        <li class="list-group-item"><button type="button" class="btn btn-primary" id="edit_profile" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Edit</button></li>
+                                        
+                                            <input type="hidden" name="login_user_id" id="login_user_id" value="<?php echo  $_SESSION['login_id']; ?>">
+                                        
+
+                                        <li class="list-group-item"><button type="button" class="btn btn-primary" id="edit_profile">Edit</button></li>
 
                                     </ul>
 
@@ -115,7 +119,7 @@ include "left_nav.php";
             <!-- /.row -->
             <div class="row">
                 <!-- Modal start here -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="profile_edit_view_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -123,51 +127,15 @@ include "left_nav.php";
                                 <div class="text-white rounded-3 bg-primary" id="message"></div>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                            <div class="modal-body">
+                            <div class="modal-body" id="profile_edit_body">
 
 
-                                <!-- form start here -->
-                                <form id="profile_edit_form">
-                                    <div class="mb-3">
-                                        <label for="" class="col-form-label">Name:</label>
-                                        <input type="text" class="form-control" id="name" name="name">
-                                        <span id="error_name" class="error_style"></span>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="" class="col-form-label">E-mail:</label>
-                                        <input type="email" class="form-control" id="email" name="email">
-                                        <span id="error_email" class="error_style"></span>
-                                    </div>
 
-
-                                    <div class="mb-3">
-                                        <label for="" class="col-form-label">Contact:</label>
-                                        <input type="text" class="form-control" id="contact" name="contact">
-                                        <span id="error_contact" class="error_style"></span>
-                                    </div>
-
-                                    
-                                    <div class="mb-3">
-                                        <label for="" class="col-form-label">Present Address:</label>
-                                        <div class="form-floating">
-                                            <textarea class="form-control" id="answer" style="height: 50px"></textarea>
-                                        </div>
-                                        <span id="error_answer" class="error_style"></span>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="" class="col-form-label">Permanent Address:</label>
-                                        <div class="form-floating">
-                                            <textarea class="form-control" id="answer" style="height: 50px"></textarea>
-                                        </div>
-                                        <span id="error_answer" class="error_style"></span>
-                                    </div>
-                                </form>
-                                <!-- form end here -->
 
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary" id="registration_btn">Submit</button>
+                                <button type="button" class="btn btn-primary" id="edit_submit_btn">Submit</button>
                             </div>
                         </div>
                     </div>
