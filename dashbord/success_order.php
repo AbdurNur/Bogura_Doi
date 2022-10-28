@@ -29,7 +29,7 @@ include "left_nav.php";
 
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0">Dashboard</h1>
+          <h1 class="m-0">Success Urder</h1>
           <?php session_message(); ?>
         </div><!-- /.col -->
         <div class="col-sm-6">
@@ -57,7 +57,7 @@ include "left_nav.php";
           ];
         } else {
           $where = [
-            'dalivery_by' => '3'
+            'dalivery_by' => $_SESSION['login_id'],
           ];
         }
 

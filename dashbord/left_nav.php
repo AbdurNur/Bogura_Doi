@@ -107,15 +107,7 @@
               </li>
 
             </ul>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="cancel_order.php" class="nav-link text-light">
-                  <i class="fa-solid fa-xmark"></i>
-                  <p>CANCEL</p>
-                </a>
-              </li>
-
-            </ul>
+            
           <?php }  ?>
 
           <ul class="nav nav-treeview">
@@ -136,6 +128,18 @@
             </li>
 
           </ul>
+          <?php if ($_SESSION['login_user_type'] == '1' || $_SESSION['login_user_type'] == '2') { ?>
+            
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="cancel_order.php" class="nav-link text-light">
+                  <i class="fa-solid fa-xmark"></i>
+                  <p>CANCEL</p>
+                </a>
+              </li>
+
+            </ul>
+          <?php }  ?>
 
         </li>
         <?php

@@ -323,5 +323,115 @@ $("#setting_edit_submit_btn").click(function () {
 // Setting Edit Section End
 
 
+// Order Deliverd Section Start
+function order_deliverde(order_id) {
+    $.ajax({
+        url: "../function/order_manegmaent.php?process_type=order_deliverde",
+        type: "post",
+        dataType: "json",
+        data: "order_id=" + order_id,
+        success: function (response) {
+            $("#show_message").html(response.message)
+            
+        }
+    });
+}
+
+
+
+// Order Deliverd Section End
+
+// Pending Deliverd Section Start
+function order_pending(order_id) {
+    $.ajax({
+        url: "../function/order_manegmaent.php?process_type=pending_order",
+        type: "post",
+        dataType: "json",
+        data: "order_id=" + order_id,
+        success: function (response) {
+            $("#show_message").html(response.message)
+            
+        }
+    });
+}
+
+
+
+// Order Deliverd Section End
+
+
+// Order Cancel Section Start
+function order_cacel(cancel_order_id) {
+    $.ajax({
+        url: "../function/order_manegmaent.php?process_type=order_cacel",
+        type: "post",
+        dataType: "html",
+        data: "cancel_order_id=" + cancel_order_id,
+        success: function (response) {
+            $("#cancel_order_modal").modal('show');
+            $("#cancel_order_modal_body").html(response);
+        }
+    });
+}
+
+$("#product_cancel_submit_btn").click(function () {
+    $.ajax({
+        url: "../function/order_manegmaent.php?process_type=product_cancel_submit_btn",
+        type: "post",
+        dataType: "json",
+        data: $("#cancel_form").serialize(),
+
+        success: function (response) {
+
+            showCommonMessage(response.message)
+
+            if (response.status == 'success') {
+                setTimeout(function () {
+                    resetFormInput();
+                    $("#cancel_order_modal").modal('hide');
+                }, 2000)
+
+            } else {
+                showErrorMessage(response.data)
+            }
+
+        }
+    });
+
+
+
+    function showErrorMessage(errorData) {
+
+        // all error message do empty
+        $(".error_style").html("");
+
+        for (let error in errorData) {
+
+            $("#" + error).html(errorData[error])
+
+        }
+    }
+
+    function showCommonMessage(message) {
+
+        $("#show_cancel_message").html("");
+        $("#show_cancel_message").html(message);
+    }
+
+
+    function resetFormInput() {
+
+        $("#show_cancel_message").html("");
+        $(".error_style").html("");
+        $("#cancel_causes").val("");
+       
+        
+       
+    }
+})
+// Order Cancel Section End
+
+
+
 
 

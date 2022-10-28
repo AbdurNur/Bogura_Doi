@@ -29,8 +29,10 @@ include "left_nav.php";
 
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0">Dashboard</h1>
-          <?php session_message(); ?>
+          <h1 class="m-0">Pending Order</h1>
+          <div class="div" id="show_message">
+
+          </div>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
@@ -89,7 +91,7 @@ include "left_nav.php";
             </thead>
             <tbody>
               <?php
-              
+
               $mrp_total = 0;
               foreach ($total_order as $value) {
                 $mrp_total = $mrp_total + $value->total_price;
@@ -126,27 +128,19 @@ include "left_nav.php";
                   </td>
 
                   <td>
+                    <button type="button" class="btn  btn-success" onclick="order_deliverde('<?php echo $value->id ?>')">DELIVERDE</button>
                     <?php
-                    if (isset($_SESSION['login_user_type']) && $_SESSION['login_user_type'] == '3') { ?>
-                      <a href="#" class="btn btn-success">DELIVERDE</a>
-
-                    <?php } else { ?>
-                      <a href="#" class="btn btn-danger">Cancel</a>
-                      <a href="#" class="btn btn-success">Edit</a>
-                      <a href="#" class="btn btn-success">DELIVERDE</a>
-                    <?php }
-
-
-                    ?>
-
+                    if ($_SESSION['login_user_type'] == '1' || $_SESSION['login_user_type'] == '2') { ?>
+                      <button type="button" class="btn  btn-danger" onclick="order_cacel('<?php echo $value->id ?>')">Cancel</button>
+                    <?php }  ?>
                   </td>
                 </tr>
               <?php } ?>
-              
+
 
             </tbody>
             <tfoot>
-            <tr>
+              <tr>
                 <td colspan="7" class="text-center">
                   <h1> Total Pending Sales</h1>
                 </td>
@@ -155,27 +149,42 @@ include "left_nav.php";
               </tr>
             </tfoot>
           </table>
-
           <!-- end of foreach -->
-
         <?php } else { ?>
-
           <div>
-
             <h1 class=" text-danger">NO ORDER PENDING!</h1>
           </div>
-
-
-
-
-
         <?php } ?>
+      </div>
+      <!-- /.row -->
+
+      <!-- /.row -->
+      <div class="row">
+
+        <!-- Modal start here -->
+        <div class="modal fade" id="cancel_order_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Product Edite</h5>
+                <div class="text-white rounded-3 bg-primary" id="message"></div>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body" id="cancel_order_modal_body">
 
 
 
 
 
-
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="product_cancel_submit_btn">Submit</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Modal end here -->
       </div>
       <!-- /.row -->
 

@@ -109,6 +109,3 @@ function contact_validation(){
          return $response;
     }
 }
-
-
-?>

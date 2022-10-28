@@ -29,8 +29,10 @@ include "left_nav.php";
 
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0">Dashboard</h1>
-          <?php session_message(); ?>
+          <h1 class="m-0">New Order</h1>
+          <div class="div" id="show_message">
+
+          </div>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
@@ -48,23 +50,15 @@ include "left_nav.php";
     <div class="container-fluid">
       <!-- Small boxes (Stat box) -->
       <div class="row">
-
         <?php
         $where = [
           'oder_status' => 'no_dalivered'
-
-
         ];
         $table_name = 'product_order';
-        $total_order = get_all_data($table_name, $where);
-
-        // print'<pre>';    
-        // print_r($all_user);
-        // print'</pre>';
+        $total_order = get_all_data($table_name, $where);        
         ?>
+
         <?php
-
-
         if ($total_order) {
           $sl = 1;
         ?>
@@ -92,10 +86,6 @@ include "left_nav.php";
               $mrp_total = 0;
               foreach ($total_order as $value) {
                 $mrp_total = $mrp_total + $value->total_price;
-
-
-
-
               ?>
                 <tr style="background-color:<?php echo $value->color_code ?>;">
                   <th scope="row"><?php echo $sl++ ?></th>
@@ -121,19 +111,13 @@ include "left_nav.php";
                     }
                     ?>
                   </td>
-                  <td>
+                  <td>                   
+                    <button type="button" class="btn  btn-success"  onclick="order_deliverde('<?php echo $value->id ?>')" >DELIVERDE</button>   
                     <?php
-                    if (isset($_SESSION['login_user_type']) && $_SESSION['login_user_type'] == '3') { ?>
-                      <a href="#" class="btn btn-success">DELIVERDE</a>
-                    <?php } else { ?>
-                      <a href="#" class="btn btn-danger">Cancel</a>
-                      <a href="#" class="btn btn-success">Edit</a>
-                      <form id="new_order">
-                        <input type="hidden" id="item_id" name="item_id" value=<?php echo $value->id ?>>
-                      </form>
-                      <button type="button" class="btn  btn-success " id="delivered">DELIVERED</button>
-                    <?php }
-                    ?>
+                    if (isset($_SESSION['login_user_type']) && $_SESSION['login_user_type'] == '1' || "2") { ?>                                            
+                      <button type="button" class="btn  btn-danger"  onclick="order_cacel('<?php echo $value->id ?>')" >Cancel</button>   
+                      <button type="button" class="btn  btn-warning"  onclick="order_pending('<?php echo $value->id ?>')" >Pending</button>   
+                    <?php }  ?>                    
                   </td>
                 </tr>
               <?php } ?>
@@ -148,27 +132,41 @@ include "left_nav.php";
               </tr>
             </tfoot>
           </table>
-
           <!-- end of foreach -->
-
         <?php } else { ?>
-
           <div>
-
             <h1 class=" text-danger">NO NEW ORDER YET !</h1>
           </div>
-
-
-
-
-
         <?php } ?>
+      </div>
+      <!-- /.row -->
+      <!-- /.row -->
+      <div class="row">
+
+        <!-- Modal start here -->
+        <div class="modal fade" id="cancel_order_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Product Edite</h5>
+                <div class="text-white rounded-3 bg-primary" id="message"></div>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body" id="cancel_order_modal_body">
 
 
 
 
 
-
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="product_cancel_submit_btn">Submit</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Modal end here -->
       </div>
       <!-- /.row -->
 
