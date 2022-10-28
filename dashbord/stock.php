@@ -77,8 +77,6 @@ include "left_nav.php";
                   <th scope="col">DP</th>
                   <th scope="col"> STOCK DP</th>
                   <th scope="col">MRP</th>
-
-
                   <th scope="col">CREATED AT</th>
                   <th scope="col">CREATED BY</th>
                   <th scope="col">UPDATED AT</th>
@@ -96,75 +94,77 @@ include "left_nav.php";
                   $stock_dp = $value->dp * $value->quantity;
                   $total = $total + $stock_dp;
                   $mrp_total = $mrp_total + ($value->product_price * $value->quantity);
-
-
-
-
-
                 ?>
                   <tr>
-
                     <th scope="row"><?php echo $sl++ ?></th>
                     <td><?php echo $value->product_sl ?></td>
                     <td><?php echo $value->product_name  ?></td>
-
                     <td style="background-color:white;">
                       <img style="height: 50px; width: 50px;  " src="../assets/images/<?php echo $value->product_img ?>" class="card-img-top" alt="">
                     </td>
                     <td><?php echo $value->quantity ?></td>
                     <td><?php echo $value->dp ?></td>
                     <td><?php echo ($stock_dp) ?></td>
-
                     <td><?php echo $value->product_price ?></td>
                     <td><?php echo $value->created_at ?></td>
                     <td><?php echo $value->created_by ?></td>
                     <td><?php echo $value->updated_at ?></td>
                     <td><?php echo $value->updated_by ?></td>
                     <td>
-
                       <input type="hidden" name="product_id" value="<?php echo $value->id ?>">
                       <input type="submit" class="btn btn-danger" name="delete_btn" value="Delete">
-
-                      <a href="#" class="btn btn-success ">Edit</a>
-
-
+                      <button type="button" class="btn btn-primary"  onclick="product_edit('<?php echo $value->id ?>')" >Edit</button>                    
                     </td>
-
                   </tr>
-
-
                 <?php } ?>
-
-
               </tbody>
               <tfoot>
                 <tr>
-
                   <td colspan="6" class="text-center">
                     <h1>Total Stock</h1>
                   </td>
                   <td><?php echo '=' . $total . '/=' ?></td>
                   <td><?php echo '=' . $mrp_total . '/=' ?></td>
-
                   <td colspan="5"></td>
-
-
                 </tr>
-
-
               </tfoot>
             </table>
-
             <!-- end of foreach -->
-
           <?php } ?>
-
-
-
-
         </form>
       </div>
       <!-- /.row -->
+      <!-- /.row -->
+      <div class="row">
+
+        <!-- Modal start here -->
+        <div class="modal fade" id="product_edit_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Product Edite</h5>
+                <div class="text-white rounded-3 bg-primary" id="message"></div>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body" id="product_edit_modal_body">
+
+
+
+
+
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="product_edit_submit_btn">Submit</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Modal end here -->
+      </div>
+      <!-- /.row -->
+
+
 
     </div><!-- /.container-fluid -->
   </section>

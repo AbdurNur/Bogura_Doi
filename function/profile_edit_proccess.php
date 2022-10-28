@@ -52,7 +52,7 @@ function get_profile_edit_view($data)
             </div>
             <span id="error_present_address" class="error_style text-danger"></span>
         </div>
-        
+
     </form>
     <!-- form end here -->
 
@@ -60,103 +60,109 @@ function get_profile_edit_view($data)
 <?php }
 
 
-    if (isset($_GET["process_type"]) && $_GET["process_type"] == "edit_profile") {
+if (isset($_GET["process_type"]) && $_GET["process_type"] == "edit_profile") {
 
-        include "utilitis.php";
-        include "database_management.php";
-
-        // default:
-        $status = 'success';
-        $message = "<div class='alert alert-success'>Edit has been successfully completed</div>";
-        $data = "";
-
-        // empty validation:
-
-        $error_response = check_input_required();
-
-        if ($error_response->has_error) {
-
-            $status = 'error';
-            $message = "<div class='alert alert-danger'>Please fix the error!</div>";
-            $data = $error_response->error_data;
-        } else {
-            $edit_id=$_POST["edit_user_id"];
-
-            $name               = input_data_validation($_POST["name"]);
-            $email              = input_data_validation($_POST["email"]);
-            $contact            = input_data_validation($_POST["contact"]);
-            $present_address    = input_data_validation($_POST["present_address"]);           
-            $update_by         = $_POST["edit_user_id"];
-            $update_at         = date("Y-m-d H:i:s");
+    include "utilitis.php";
+    include "database_management.php";
 
 
-            $table = "users";
-            $dataParam  = [
+    // empty validation:
+
+    $error_response = check_input_required();
+
+    if ($error_response->has_error) {
+
+        $status = 'error';
+        $message = "<div class='alert alert-danger'>Please fix the error!</div>";
+        $data = $error_response->error_data;
+    } else {
+        $edit_id = $_POST["edit_user_id"];
+
+        $name               = input_data_validation($_POST["name"]);
+        $email              = input_data_validation($_POST["email"]);
+        $contact            = input_data_validation($_POST["contact"]);
+        $present_address    = input_data_validation($_POST["present_address"]);
+        $update_by         = $_POST["edit_user_id"];
+        $update_at         = date("Y-m-d H:i:s");
+
+
+        $table = "users";
+        $dataParam  = [
+            "name"      => $name,
+            "email"     => $email,
+            "number"   => $contact,
+            "address"   => $present_address,
+            "update_by" => $update_by,
+            "update_at" => $update_at,
+
+        ];
+        $where = [
+
+            'id' => $edit_id,
+        ];
+
+        $update = update_data($table, $dataParam, $where);
+        if ($update) {
+
+            // default:
+            $status = 'success';
+            $message = "<div class='alert alert-success'>Edit has been successfully completed</div>";
+            $data = [
                 "name"      => $name,
                 "email"     => $email,
                 "number"   => $contact,
                 "address"   => $present_address,
-                "update_by" => $update_by,
-                "update_at" => $update_at,
-                
             ];
-            $where=[
-
-                'id'=>$edit_id,
-            ];
-
-            $update=update_data($table, $dataParam, $where);
-
-            
-        } // end of else block
+        }
+    } // end of else block
 
 
-        // response section
+    // response section
 
-        $response  = [
-            'status' => $status,
-            'message' => $message,
-            'data'   => $data
+    $response  = [
+        'status' => $status,
+        'message' => $message,
+        'data'   => $data
 
-        ];
+    ];
 
-        echo json_encode($response);
-        exit;
+    echo json_encode($response);
+    exit;
+}
+
+function check_input_required()
+{
+
+
+    $is_error = false;
+    $error_data  = [];
+    $is_requred    = " is required";
+
+    if (empty($_POST['name'])) {
+        $is_error = true;
+        $error_data['error_name']                   =    'Name' . $is_requred;
+    }
+    if (empty($_POST['email'])) {
+        $is_error = true;
+        $error_data['error_email']                  =    'Email' . $is_requred;
+    }
+    if (empty($_POST['contact'])) {
+        $is_error = true;
+        $error_data['error_contact']                =    'Contact' . $is_requred;
+    }
+    if (empty($_POST['present_address'])) {
+        $is_error = true;
+        $error_data['error_present_address']        =    'Present_address' . $is_requred;
     }
 
-    function check_input_required()
-    {
-        
 
-        $is_error = false;
-        $error_data  = [];
-        $is_requred    = " is required";
+    $response = (object)[
+        'has_error'         => $is_error,
+        'error_data'        => $error_data,
+    ];
 
-        if (empty($_POST['name'])) {
-            $is_error = true;
-            $error_data['error_name']                   =    'Name' . $is_requred;
-        }
-        if (empty($_POST['email'])) {
-            $is_error = true;
-            $error_data['error_email']                  =    'Email' . $is_requred;
-        }
-        if (empty($_POST['contact'])) {
-            $is_error = true;
-            $error_data['error_contact']                =    'Contact' . $is_requred;
-        }
-        if (empty($_POST['present_address'])) {
-            $is_error = true;
-            $error_data['error_present_address']        =    'Present_address' . $is_requred;
-        }
-       
-
-        $response = (object)[
-            'has_error'         => $is_error,
-            'error_data'        => $error_data,
-        ];
-
-        return $response;
-    }
+    return $response;
+}
 
 
 

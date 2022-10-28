@@ -55,18 +55,8 @@
                         // $_SESSION['success']    =   'success';
                         // $_SESSION['message']    =   $message;
     
-    
-                        $_SESSION['login_status'] =1;
-                       
-                        $_SESSION['login_id']           =$login_data->id;
-                        $_SESSION['login_name']         =$login_data->name;
-                        $_SESSION['login_email']        =$login_data->email;
-                       
-                        $_SESSION['login_staff_id']     =$login_data->staff_id;
                         $_SESSION['login_user_type']    =$login_data->user_type;
-                        $_SESSION['login_user_img']     =$login_data->image;
-                        
-                    
+                                                                   
                     }else{
                         $is_login_error         = true;
                         $message                =   "Password not matched!";
@@ -89,19 +79,26 @@
             if($is_login_error==false){
                
                 if($_SESSION['login_user_type']== "4"){
+                    
+                    $_SESSION['login_status'] =1;
+                    $_SESSION['login_id']           =$login_data->id;
+                    $_SESSION['login_name']         =$login_data->name;
+                    $_SESSION['login_email']        =$login_data->email;                   
+                    $_SESSION['login_staff_id']     =$login_data->staff_id;                    
+                    $_SESSION['login_user_img']     =$login_data->image;
                     header('Location:index.php');
                     exit;
                 
     
                 }
                 if($_SESSION['login_user_type']== "1"||"2"||"3"){
-                    header('Location:./dashbord/dasbord.php');
+                    header('Location:dashbord/index.php');
                     exit;
                     
                 
     
                 }
-                
+              
     
             }elseif($is_login_error==true){
                 header('Location:login.php');

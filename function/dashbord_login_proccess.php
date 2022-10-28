@@ -2,7 +2,7 @@
 
 
 
-    if(isset($_POST['btn']) && !empty($_POST['btn'])){
+    if(isset($_POST['dashbord_login_btn']) && !empty($_POST['dashbord_login_btn'])){
         // input_validation
         $email      =  input_data_validation($_POST['email']);
         $password   =  input_data_validation($_POST['password']);
@@ -54,16 +54,8 @@
                         // $_SESSION['success']    =   'success';
                         // $_SESSION['message']    =   $message;
     
-    
-                        $_SESSION['login_status'] =1;
-                       
-                        $_SESSION['login_id']           =$login_data->id;
-                        $_SESSION['login_name']         =$login_data->name;
-                        $_SESSION['login_email']        =$login_data->email;
-                        $_SESSION['login_staff_id']     =$login_data->staff_id;
                         $_SESSION['login_user_type']    =$login_data->user_type;
-                        $_SESSION['login_user_img']     =$login_data->image;
-                        
+                       
                     
                     }else{
                         $is_login_error         = true;
@@ -72,7 +64,6 @@
                         $_SESSION['error']      =   'error';
                         $_SESSION['message']    =   $message;
                     }
-
                 }
                
             }else{
@@ -82,34 +73,30 @@
                 $_SESSION['message']    =   $message;
             }
 
-
-
-            if($is_login_error==false){
-               
+            if($is_login_error==false){               
                 if($_SESSION['login_user_type']== "4"){
-                    header('Location:index.php');
+                    header('Location:../login.php');                    
                     exit;
-                
-    
                 }
+                
                 if($_SESSION['login_user_type']== "1"||"2"||"3"){
-                    header('Location:./dashbord/dasbord.php');
+                                  
+                    $_SESSION['login_status'] =1;                       
+                    $_SESSION['login_id']           =$login_data->id;
+                    $_SESSION['login_name']         =$login_data->name;
+                    $_SESSION['login_email']        =$login_data->email;
+                    $_SESSION['login_staff_id']     =$login_data->staff_id;                       
+                    $_SESSION['login_user_img']     =$login_data->image;
+                    header('Location:dasbord.php');
                     exit;
-                    
-                
-    
                 }
                 
-    
             }elseif($is_login_error==true){
-                header('Location:login.php');
+                header('Location:index.php');
                 exit;
-    
+               
             }
         } 
-        
-        
-       
     }
 
     

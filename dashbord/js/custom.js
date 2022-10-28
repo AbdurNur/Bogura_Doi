@@ -27,10 +27,13 @@ $("#repley_send_btn").click(function () {
             showCommonMessage(response.message)
 
             if (response.status == 'success') {
+                showSuccessData(response.data)
                 setTimeout(function () {
                     resetFormInput();
                     $("#reply_modal").modal('hide');
                 }, 2000)
+                 
+                
 
             } else {
                 showErrorMessage(response.data)
@@ -49,6 +52,16 @@ $("#repley_send_btn").click(function () {
         for (let error in errorData) {
 
             $("#" + error).html(errorData[error])
+
+        }
+    }
+
+    function showSuccessData(successdata) {
+
+       
+        for (let success in successdata) {
+
+            $("#profile_show_name").html(successdata[success])
 
         }
     }
@@ -152,5 +165,86 @@ $("#edit_submit_btn").click(function () {
 })
 
 // Profile Section End
+
+// Stock Product Edit Section Start
+
+function product_edit(product_id) {
+    $.ajax({
+        url: "../function/stock_product_edit_dilite_proccess.php?process_type=product_edit",
+        type: "post",
+        dataType: "html",
+        data: "product_id=" + product_id,
+        success: function (response) {
+            $("#product_edit_modal").modal('show');
+            $("#product_edit_modal_body").html(response);
+        }
+    });
+}
+
+
+$("#product_edit_submit_btn").click(function () {
+    $.ajax({
+        url: "../function/stock_product_edit_dilite_proccess.php?process_type=product_edit_submit",
+        type: "post",
+        dataType: "json",
+        data: $("#product_edit_form").serialize(),
+
+        success: function (response) {
+
+            showCommonMessage(response.message)
+
+            if (response.status == 'success') {
+                setTimeout(function () {
+                    resetFormInput();
+                    $("#product_edit_modal").modal('hide');
+                }, 2000)
+
+            } else {
+                showErrorMessage(response.data)
+            }
+
+        }
+    });
+
+
+
+    function showErrorMessage(errorData) {
+
+        // all error message do empty
+        $(".error_style").html("");
+
+        for (let error in errorData) {
+
+            $("#" + error).html(errorData[error])
+
+        }
+    }
+
+    function showCommonMessage(message) {
+
+        $("#show_message").html("");
+        $("#show_message").html(message);
+    }
+
+
+    function resetFormInput() {
+
+        $("#show_message").html("");
+        $(".error_style").html("");
+        $("#product_sl").val("");
+        $("#product_name").val("");
+        $("#quantity").val("");
+        $("#dp").val("");
+        $("#product_price").val("");
+       
+    }
+})
+
+
+
+
+// Stock Product Edit Section End
+
+
 
 

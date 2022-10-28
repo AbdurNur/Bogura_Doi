@@ -1,6 +1,16 @@
 <?php session_start();
 
 date_default_timezone_set('Asia/Dhaka');
+// if (!isset($_SESSION['login_status'])) {
+
+//   $message                      =   "Unauthorised access!";
+
+//   $_SESSION['error']            =   'error';
+//   $_SESSION['message']          =   $message;
+//   header("Location:index.php");
+  
+//   exit;
+// }
 include "function/session_info.php";
 include "function/utilitis.php";
 include "function/database_management.php";

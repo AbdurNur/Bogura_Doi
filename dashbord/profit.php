@@ -113,7 +113,7 @@ include "left_nav.php";
                   <td style="background-color:white;">
                     <img style="height: 50px; width: 50px;  " src="../assets/images/<?php echo $value->product_img ?>" class="card-img-top" alt="">
                   </td>
-                  <td><?php echo $value->product_name ?></td>
+                  <td ><?php echo $value->product_name ?></td>
                   <td><?php echo $value->quantity ?></td>
                   <td><?php echo $value->price ?></td>
                   <td><?php echo $value->commission ?></td>

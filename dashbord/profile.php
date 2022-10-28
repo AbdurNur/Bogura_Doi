@@ -98,11 +98,11 @@ include "left_nav.php";
 
                                         ?>
 
-                                        <li class="list-group-item">Name: <?php echo  $profile_data->name ?></li>
-                                        <li class="list-group-item">Email: <?php echo  $profile_data->email ?></li>
-                                        <li class="list-group-item">Contact: <?php echo  $profile_data->number ?></li>
+                                        <li class="list-group-item" id="profile_show_name">Name: <?php echo  $profile_data->name ?></li>
+                                        <li class="list-group-item" id="profile_show_email">Email: <?php echo  $profile_data->email ?></li>
+                                        <li class="list-group-item" id="profile_show_contact">Contact: <?php echo  $profile_data->number ?></li>
                                         <li class="list-group-item">Staff Id: <?php echo  $profile_data->staff_id ?></li>                                       
-                                        <li class="list-group-item">Present Address: <?php echo  $profile_data->address ?></li>
+                                        <li class="list-group-item" id="profile_show_address">Present Address: <?php echo  $profile_data->address ?></li>
                                         <li class="list-group-item">Permanent Address: <?php echo  $profile_data->parmanent_address ?></li>
 
 
