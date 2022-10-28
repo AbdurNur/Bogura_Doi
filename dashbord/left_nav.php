@@ -8,11 +8,11 @@
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
       <div class="image">
 
-       
+
         <?php
 
         if (isset($_SESSION['login_user_type']) && $_SESSION['login_user_type'] == 1) { ?>
-           <img src="theme/dist/img/admin.png" class="img-circle elevation-2" alt="User Image">
+          <img src="theme/dist/img/admin.png" class="img-circle elevation-2" alt="User Image">
 
         <?php } elseif (isset($_SESSION['login_user_type']) && $_SESSION['login_user_type'] == 2) { ?>
           <img src="theme/dist/img/manager.png" class="img-circle elevation-2" alt="User Image">
@@ -86,6 +86,7 @@
               </li>
 
             </ul>
+
           </li>
         <?php } ?>
         <li class="nav-item ">
@@ -170,7 +171,6 @@
           </li>
 
 
-
         <?php
         }
 
@@ -182,6 +182,16 @@
             <p>Profile </p>
           </a>
         </li>
+        <?php if ($_SESSION['login_user_type'] == '1') { ?>
+
+
+          <li class="nav-item">
+            <a href="seeting.php" class="nav-link text-light">
+              <i class="fa-solid fa-gear"></i>
+              <p>Seeting</p>
+            </a>
+          </li>
+        <?php } ?>
 
         <li class="nav-item">
           <a href="../logut.php" class="nav-link text-light">

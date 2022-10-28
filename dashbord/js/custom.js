@@ -246,5 +246,82 @@ $("#product_edit_submit_btn").click(function () {
 // Stock Product Edit Section End
 
 
+// Setting Edit Section Start
+function setting_edit(setting_edit_id) {
+    $.ajax({
+        url: "../function/setting_process.php?process_type=setting_edit",
+        type: "post",
+        dataType: "html",
+        data: "setting_edit_id=" + setting_edit_id,
+        success: function (response) {
+            $("#setting_edit_modal").modal('show');
+            $("#setting_edit_modal_body").html(response);
+        }
+    });
+}
+
+
+$("#setting_edit_submit_btn").click(function () {
+    $.ajax({
+        url: "../function/setting_process.php?process_type=setting_edit_submit_btn",
+        type: "post",
+        dataType: "json",
+        data: $("#setting_edit_form").serialize(),
+
+        success: function (response) {
+
+            showCommonMessage(response.message)
+
+            if (response.status == 'success') {
+                setTimeout(function () {
+                    resetFormInput();
+                    $("#setting_edit_modal").modal('hide');
+                }, 2000)
+
+            } else {
+                showErrorMessage(response.data)
+            }
+
+        }
+    });
+
+
+
+    function showErrorMessage(errorData) {
+
+        // all error message do empty
+        $(".error_style").html("");
+
+        for (let error in errorData) {
+
+            $("#" + error).html(errorData[error])
+
+        }
+    }
+
+    function showCommonMessage(message) {
+
+        $("#show_message").html("");
+        $("#show_message").html(message);
+    }
+
+
+    function resetFormInput() {
+
+        $("#show_message").html("");
+        $(".error_style").html("");
+        $("#tittle").val("");
+       
+        
+       
+    }
+})
+
+
+
+
+// Setting Edit Section End
+
+
 
 
