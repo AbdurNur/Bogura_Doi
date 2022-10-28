@@ -16,11 +16,12 @@ include "header.php";
   <div class="row ">
     <div class="col col-md-12 mt-5 ">
       <div class="login-box">
-        <div class="login-logo">
-          <a href="#"><b>Admin</b>LTE</a>
-        </div>
+
         <!-- /.login-logo -->
         <div class="card">
+          <div class="login-logo mt-5">
+            <a class="navbar-brand" href="index.php"><img style="width: 50px;" src="../assets/images/<?php echo $_SESSION['logo']; ?>" alt=""><span class="text-primary">বগুড়ার দই ঘর </span></a>
+          </div>
           <div class="card-body login-card-body">
             <p class="login-box-msg">Sign in to start your session</p>
             <?php session_message(); ?>
