@@ -17,9 +17,6 @@
             $data = get_all_data($table_name,);
             if ($data) {
                 foreach ($data as $value) { ?>
-
-
-
                     <!-- Grid column -->
                     <div class="col-lg-3 col-md-6 mb-4 d-flex  align-items-start">
                         <!-- Card -->

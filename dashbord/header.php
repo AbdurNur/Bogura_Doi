@@ -18,7 +18,7 @@ include "../function/dashbord_login_proccess.php";
 include "../function/add_view_product_proccess.php";
 include "../function/add_stock_process.php";
 include "../function/registration_process.php";
-include "../function/edit_delete_process.php";
+
 
 
 

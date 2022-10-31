@@ -31,14 +31,44 @@
         <?php
 
         if (isset($_SESSION['login_user_type']) && $_SESSION['login_user_type'] == 1) { ?>
-          <a href="#" class="d-block text-light">Admin <?php echo $_SESSION['login_name'] ?></a>
+          <a href="dasbord.php" class="d-block text-light">
+            <h3>Admin</h3>
+          </a>
 
         <?php } elseif (isset($_SESSION['login_user_type']) && $_SESSION['login_user_type'] == 2) { ?>
-          <a href="#" class="d-block text-light">Maneger <?php echo $_SESSION['login_name'] ?></a>
+          <a href="dasbord.php" class="d-block text-light">
+            <h3>Maneger</h3>
+          </a>
 
 
         <?php } elseif (isset($_SESSION['login_user_type']) && $_SESSION['login_user_type'] == 3) { ?>
-          <a href="#" class="d-block text-light">Service Man <?php echo $_SESSION['login_name'] ?></a>
+          <a href="dasbord.php" class="d-block text-light">
+            <h3>Service Man </h3>
+          </a>
+
+
+        <?php  }
+
+
+        ?>
+
+      </div>
+    </div>
+    <!-- Sidebar user panel (optional) -->
+    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+
+      <div class="info">
+        <?php
+
+        if (isset($_SESSION['login_user_type']) && $_SESSION['login_user_type'] == 1) { ?>
+          <a href="dasbord.php" class="d-block text-light"> Name : <?php echo $_SESSION['login_name'] ?></a>
+
+        <?php } elseif (isset($_SESSION['login_user_type']) && $_SESSION['login_user_type'] == 2) { ?>
+          <a href="dasbord.php" class="d-block text-light"> Name : <?php echo $_SESSION['login_name'] ?></a>
+
+
+        <?php } elseif (isset($_SESSION['login_user_type']) && $_SESSION['login_user_type'] == 3) { ?>
+          <a href="dasbord.php" class="d-block text-light"> Name : <?php echo $_SESSION['login_name'] ?></a>
 
 
         <?php  }
@@ -107,7 +137,7 @@
               </li>
 
             </ul>
-            
+
           <?php }  ?>
 
           <ul class="nav nav-treeview">
@@ -129,7 +159,7 @@
 
           </ul>
           <?php if ($_SESSION['login_user_type'] == '1' || $_SESSION['login_user_type'] == '2') { ?>
-            
+
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="cancel_order.php" class="nav-link text-light">

@@ -1,7 +1,7 @@
 // add to cart section
 function add_to_cart(item_id) {
 
-    // alert("Item Already Added")
+ 
     $.ajax({
         url: "function/add_to_cart_proccess.php?process_type=add_cart",
         type: "post",

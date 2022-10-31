@@ -30,7 +30,9 @@ include "left_nav.php";
       <div class="row mb-2">
         <div class="col-sm-6">
           <h1 class="m-0">Stock</h1>
-          <?php session_message(); ?>
+          <div class="div" id="show_message">
+
+          </div>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
@@ -111,8 +113,8 @@ include "left_nav.php";
                     <td><?php echo $value->updated_at ?></td>
                     <td><?php echo $value->updated_by ?></td>
                     <td>
-                      <input type="hidden" name="product_id" value="<?php echo $value->id ?>">
-                      <input type="submit" class="btn btn-danger" name="delete_btn" value="Delete">
+                     
+                      <button type="button" class="btn btn-danger"  onclick="product_delite('<?php echo $value->id ?>')" >Delete</button> 
                       <button type="button" class="btn btn-primary"  onclick="product_edit('<?php echo $value->id ?>')" >Edit</button>                    
                     </td>
                   </tr>

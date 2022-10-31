@@ -47,7 +47,7 @@ function get_profile_edit_view($data)
             <input type="text" class="form-control" id="dp" name="dp" value="<?php echo $data->dp ?>">
             <span id="error_dp" class="error_style text-danger"></span>
         </div>
-       
+
         <div class="mb-3">
             <label for="" class="col-form-label">MRP:</label>
             <input type="text" class="form-control" id="product_price" name="product_price" value="<?php echo $data->product_price ?>">
@@ -55,7 +55,7 @@ function get_profile_edit_view($data)
         </div>
 
 
-       
+
 
     </form>
     <!-- form end here -->
@@ -87,7 +87,7 @@ if (isset($_GET["process_type"]) && $_GET["process_type"] == "product_edit_submi
         $product_name               = input_data_validation($_POST["product_name"]);
         $quantity                   = input_data_validation($_POST["quantity"]);
         $dp                         = input_data_validation($_POST["dp"]);
-        $product_price              = input_data_validation($_POST["product_price"]);       
+        $product_price              = input_data_validation($_POST["product_price"]);
         $update_by                  = $_SESSION['login_id'];
         $update_at                  = date("Y-m-d H:i:s");
 
@@ -98,7 +98,7 @@ if (isset($_GET["process_type"]) && $_GET["process_type"] == "product_edit_submi
             "product_name"          => $product_name,
             "quantity"              => $quantity,
             "dp"                    => $dp,
-            "product_price"         => $product_price,            
+            "product_price"         => $product_price,
             "updated_by"             => $update_by,
             "updated_at"             => $update_at,
 
@@ -114,9 +114,7 @@ if (isset($_GET["process_type"]) && $_GET["process_type"] == "product_edit_submi
             // default:
             $status = 'success';
             $message = "<div class='alert alert-success'>Edit has been successfully completed</div>";
-            $data = [
-                
-            ];
+            $data = [];
         }
     } // end of else block
 
@@ -154,7 +152,7 @@ function check_input_required()
         $is_error = true;
         $error_data['error_quantity']                =    'Quantity' . $is_requred;
     }
-    
+
     if (empty($_POST['dp'])) {
         $is_error = true;
         $error_data['error_dp']                =    'DP' . $is_requred;
@@ -173,7 +171,39 @@ function check_input_required()
     return $response;
 }
 
+// Stock Product Delete Section Start
+if (isset($_GET["process_type"]) && $_GET["process_type"] == "delete_stock_product") {
+    include "database_management.php";
+
+    $stoct_product_id = $_POST['stoct_product_id'];
+
+    $table_name = 'stock';
+    $where = [
+        'id' => $stoct_product_id,
+    ];
+
+    $delete = delete_data($table_name, $where);
+    if ($delete) {
+
+        // default:
+        $status = 'success';
+        $message = "<div class='alert alert-success'>Delete has been successfully completed</div>";
+    } else {
+        $status = 'error';
+        $message = "<div class='alert alert-danger'>Please fix the error!</div>";
+    }
+    // response section
+
+    $response  = [
+        'status' => $status,
+        'message' => $message,
 
 
+    ];
+
+    echo json_encode($response);
+    exit;
+}
+// Stock Product Delete Section End
 
 ?>

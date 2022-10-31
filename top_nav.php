@@ -40,6 +40,7 @@
                                 <span id="cart_item_no"></span>
                             </a>
                         <?php } ?>
+                       
 
                         <a class="nav-link" href="logut.php">Logut</a>
 

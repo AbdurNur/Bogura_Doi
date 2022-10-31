@@ -1,4 +1,3 @@
-
 // Repley Section Start
 function question(question_id) {
     $.ajax({
@@ -7,13 +6,11 @@ function question(question_id) {
         dataType: "html",
         data: "question_id=" + question_id,
         success: function (response) {
-            $("#reply_modal").modal('show');
+            $("#reply_modal").modal("show");
             $("#repley_modal_body").html(response);
-        }
+        },
     });
 }
-
-
 
 $("#repley_send_btn").click(function () {
     $.ajax({
@@ -23,69 +20,51 @@ $("#repley_send_btn").click(function () {
         data: $("#repley_form").serialize(),
 
         success: function (response) {
+            showCommonMessage(response.message);
 
-            showCommonMessage(response.message)
-
-            if (response.status == 'success') {
-                showSuccessData(response.data)
+            if (response.status == "success") {
+                showSuccessData(response.data);
                 setTimeout(function () {
                     resetFormInput();
-                    $("#reply_modal").modal('hide');
-                }, 2000)
-                 
-                
-
+                    $("#reply_modal").modal("hide");
+                }, 2000);
             } else {
-                showErrorMessage(response.data)
+                showErrorMessage(response.data);
             }
-
-        }
+        },
     });
 
-
-
     function showErrorMessage(errorData) {
-
         // all error message do empty
         $(".error_style").html("");
 
         for (let error in errorData) {
-
-            $("#" + error).html(errorData[error])
-
+            $("#" + error).html(errorData[error]);
         }
     }
 
     function showSuccessData(successdata) {
-
-       
         for (let success in successdata) {
-
-            $("#profile_show_name").html(successdata[success])
-
+            $("#profile_show_name").html(successdata[success]);
         }
     }
 
     function showCommonMessage(message) {
-
         $("#show_message").html("");
         $("#show_message").html(message);
     }
 
-
     function resetFormInput() {
-
         $("#show_message").html("");
         $(".error_style").html("");
         $("#answer").val("");
     }
-})
+});
 // Repley Section End
-
 
 // Profile_section Start
 
-// Edit Data Show From Database  
+// Edit Data Show From Database
 
 $("#edit_profile").click(function () {
     $.ajax({
@@ -95,16 +74,11 @@ $("#edit_profile").click(function () {
         data: "login_user_id=" + $("#login_user_id").val(),
 
         success: function (response) {
-
-
-            $("#profile_edit_view_modal").modal('show');
+            $("#profile_edit_view_modal").modal("show");
             $("#profile_edit_body").html(response);
-
-
-
-        }
+        },
     });
-})
+});
 
 // Edit Profile section
 
@@ -116,45 +90,34 @@ $("#edit_submit_btn").click(function () {
         data: $("#profile_edit_form").serialize(),
 
         success: function (response) {
+            showCommonMessage(response.message);
 
-            showCommonMessage(response.message)
-
-            if (response.status == 'success') {
+            if (response.status == "success") {
                 setTimeout(function () {
                     resetFormInput();
-                    $("#profile_edit_view_modal").modal('hide');
-                }, 2000)
-
+                    $("#profile_edit_view_modal").modal("hide");
+                }, 2000);
             } else {
-                showErrorMessage(response.data)
+                showErrorMessage(response.data);
             }
-
-        }
+        },
     });
 
-
-
     function showErrorMessage(errorData) {
-
         // all error message do empty
         $(".error_style").html("");
 
         for (let error in errorData) {
-
-            $("#" + error).html(errorData[error])
-
+            $("#" + error).html(errorData[error]);
         }
     }
 
     function showCommonMessage(message) {
-
         $("#show_message").html("");
         $("#show_message").html(message);
     }
 
-
     function resetFormInput() {
-
         $("#show_message").html("");
         $(".error_style").html("");
         $("#name").val("");
@@ -162,7 +125,7 @@ $("#edit_submit_btn").click(function () {
         $("#contact").val("");
         $("#present_address").val("");
     }
-})
+});
 
 // Profile Section End
 
@@ -175,12 +138,11 @@ function product_edit(product_id) {
         dataType: "html",
         data: "product_id=" + product_id,
         success: function (response) {
-            $("#product_edit_modal").modal('show');
+            $("#product_edit_modal").modal("show");
             $("#product_edit_modal_body").html(response);
-        }
+        },
     });
 }
-
 
 $("#product_edit_submit_btn").click(function () {
     $.ajax({
@@ -190,45 +152,34 @@ $("#product_edit_submit_btn").click(function () {
         data: $("#product_edit_form").serialize(),
 
         success: function (response) {
+            showCommonMessage(response.message);
 
-            showCommonMessage(response.message)
-
-            if (response.status == 'success') {
+            if (response.status == "success") {
                 setTimeout(function () {
                     resetFormInput();
-                    $("#product_edit_modal").modal('hide');
-                }, 2000)
-
+                    $("#product_edit_modal").modal("hide");
+                }, 2000);
             } else {
-                showErrorMessage(response.data)
+                showErrorMessage(response.data);
             }
-
-        }
+        },
     });
 
-
-
     function showErrorMessage(errorData) {
-
         // all error message do empty
         $(".error_style").html("");
 
         for (let error in errorData) {
-
-            $("#" + error).html(errorData[error])
-
+            $("#" + error).html(errorData[error]);
         }
     }
 
     function showCommonMessage(message) {
-
         $("#show_message").html("");
         $("#show_message").html(message);
     }
 
-
     function resetFormInput() {
-
         $("#show_message").html("");
         $(".error_style").html("");
         $("#product_sl").val("");
@@ -236,15 +187,10 @@ $("#product_edit_submit_btn").click(function () {
         $("#quantity").val("");
         $("#dp").val("");
         $("#product_price").val("");
-       
     }
-})
-
-
-
+});
 
 // Stock Product Edit Section End
-
 
 // Setting Edit Section Start
 function setting_edit(setting_edit_id) {
@@ -254,12 +200,11 @@ function setting_edit(setting_edit_id) {
         dataType: "html",
         data: "setting_edit_id=" + setting_edit_id,
         success: function (response) {
-            $("#setting_edit_modal").modal('show');
+            $("#setting_edit_modal").modal("show");
             $("#setting_edit_modal_body").html(response);
-        }
+        },
     });
 }
-
 
 $("#setting_edit_submit_btn").click(function () {
     $.ajax({
@@ -269,96 +214,75 @@ $("#setting_edit_submit_btn").click(function () {
         data: $("#setting_edit_form").serialize(),
 
         success: function (response) {
+            showCommonMessage(response.message);
 
-            showCommonMessage(response.message)
-
-            if (response.status == 'success') {
+            if (response.status == "success") {
                 setTimeout(function () {
                     resetFormInput();
-                    $("#setting_edit_modal").modal('hide');
-                }, 2000)
-
+                    $("#setting_edit_modal").modal("hide");
+                }, 2000);
             } else {
-                showErrorMessage(response.data)
+                showErrorMessage(response.data);
             }
-
-        }
+        },
     });
 
-
-
     function showErrorMessage(errorData) {
-
         // all error message do empty
         $(".error_style").html("");
 
         for (let error in errorData) {
-
-            $("#" + error).html(errorData[error])
-
+            $("#" + error).html(errorData[error]);
         }
     }
 
     function showCommonMessage(message) {
-
         $("#show_message").html("");
         $("#show_message").html(message);
     }
 
-
     function resetFormInput() {
-
         $("#show_message").html("");
         $(".error_style").html("");
         $("#tittle").val("");
-       
-        
-       
     }
-})
-
-
-
+});
 
 // Setting Edit Section End
 
-
 // Order Deliverd Section Start
 function order_deliverde(order_id) {
-    $.ajax({
-        url: "../function/order_manegmaent.php?process_type=order_deliverde",
-        type: "post",
-        dataType: "json",
-        data: "order_id=" + order_id,
-        success: function (response) {
-            $("#show_message").html(response.message)
-            
-        }
-    });
+    if (confirm("Do You Deliver The Product!") == true) {
+        $.ajax({
+            url: "../function/order_manegmaent.php?process_type=order_deliverde",
+            type: "post",
+            dataType: "json",
+            data: "order_id=" + order_id,
+            success: function (response) {
+                $("#show_message").html(response.message);
+            },
+        });
+    }
 }
-
-
 
 // Order Deliverd Section End
 
 // Pending Deliverd Section Start
 function order_pending(order_id) {
-    $.ajax({
-        url: "../function/order_manegmaent.php?process_type=pending_order",
-        type: "post",
-        dataType: "json",
-        data: "order_id=" + order_id,
-        success: function (response) {
-            $("#show_message").html(response.message)
-            
-        }
-    });
+    if (confirm("Did You Deliver The Product!") == true) {
+        $.ajax({
+            url: "../function/order_manegmaent.php?process_type=pending_order",
+            type: "post",
+            dataType: "json",
+            data: "order_id=" + order_id,
+            success: function (response) {
+                $("#show_message").html(response.message);
+            },
+        });
+    }
 }
 
-
-
 // Order Deliverd Section End
-
 
 // Order Cancel Section Start
 function order_cacel(cancel_order_id) {
@@ -368,9 +292,9 @@ function order_cacel(cancel_order_id) {
         dataType: "html",
         data: "cancel_order_id=" + cancel_order_id,
         success: function (response) {
-            $("#cancel_order_modal").modal('show');
+            $("#cancel_order_modal").modal("show");
             $("#cancel_order_modal_body").html(response);
-        }
+        },
     });
 }
 
@@ -382,56 +306,72 @@ $("#product_cancel_submit_btn").click(function () {
         data: $("#cancel_form").serialize(),
 
         success: function (response) {
+            showCommonMessage(response.message);
 
-            showCommonMessage(response.message)
-
-            if (response.status == 'success') {
+            if (response.status == "success") {
                 setTimeout(function () {
                     resetFormInput();
-                    $("#cancel_order_modal").modal('hide');
-                }, 2000)
-
+                    $("#cancel_order_modal").modal("hide");
+                }, 2000);
             } else {
-                showErrorMessage(response.data)
+                showErrorMessage(response.data);
             }
-
-        }
+        },
     });
 
-
-
     function showErrorMessage(errorData) {
-
         // all error message do empty
         $(".error_style").html("");
 
         for (let error in errorData) {
-
-            $("#" + error).html(errorData[error])
-
+            $("#" + error).html(errorData[error]);
         }
     }
 
     function showCommonMessage(message) {
-
         $("#show_cancel_message").html("");
         $("#show_cancel_message").html(message);
     }
 
-
     function resetFormInput() {
-
         $("#show_cancel_message").html("");
         $(".error_style").html("");
         $("#cancel_causes").val("");
-       
-        
-       
     }
-})
+});
 // Order Cancel Section End
 
+// Stock  Delete Product Section Start
 
+function product_delite(stoct_product_id) {
+    if (confirm("Are You Sure Want To Delete This Product!") == true) {
+        $.ajax({
+            url: "../function/stock_product_edit_dilite_proccess.php?process_type=delete_stock_product",
+            type: "post",
+            dataType: "json",
+            data: "stoct_product_id=" + stoct_product_id,
+            success: function (response) {
+                $("#show_message").html(response.message);
+            },
+        });
+    }
+}
+// Stock  Delete Product Section End
 
+// User Delete Section Start
+function user_delete(delete_user_id) {
+    if (confirm("Are You Sure Want To Delete This user!") == true) {
+        $.ajax({
+            url: "../function/user_edite_delete_proccess.php?process_type=delete_user_id",
+            type: "post",
+            dataType: "json",
+            data: "delete_user_id=" + delete_user_id,
+            success: function (response) {
+                $("#show_message").html(response.message);
+            },
+        });
+    }
+}
 
+// User Delete Section End
 

@@ -8,26 +8,29 @@ if ((isset($_GET["process_type"]) && $_GET["process_type"] == "add_cart")) {
     include "database_management.php";
     if (isset($_SESSION['login_id'])) {
         // echo '<pre>';
-        // print_r($_GET);
+        // print_r($_POST);
         // echo '</pre>';
-        // exit;
+   
+        $status     = 'success';
+        $redirect   = 'shop.php';
+        $message    =print_r($_POST) ;
 
 
 
-        $item_id                = $_POST['item_id'];
-        $_SESSION['item_id']    = $item_id;
+        // $item_id                = $_POST['item_id'];
+        // $_SESSION['item_id']    = $item_id;
 
-        $table_name = 'stock';
+        // $table_name = 'stock';
 
-        $wheres     = [
-            "id"      => $item_id,
-        ];
+        // $wheres     = [
+        //     "id"      => $item_id,
+        // ];
 
-        $item_data          = get_data($table_name, $wheres,);
-        $item_name          = $item_data->product_name;
-        $item_price         = $item_data->product_price;
-        $item_image         = $item_data->product_img;
-        $item_quantity      = 1;
+        // $item_data          = get_data($table_name, $wheres,);
+        // $item_name          = $item_data->product_name;
+        // $item_price         = $item_data->product_price;
+        // $item_image         = $item_data->product_img;
+        // $item_quantity      = 1;
 
 
         // $item_array = [];
